@@ -582,6 +582,59 @@ svg rect[data-tip].tsel{fill:rgba(120,140,130,.16)}
 .prow.on{box-shadow:0 0 0 2px var(--g);background:var(--gs)}
 .prow .pn{flex:1;min-width:0;display:flex;flex-direction:column}.prow .pn b{font-size:16.5px;letter-spacing:-.015em}.prow .pn small{color:var(--mut);font-size:12.5px;margin-top:1px}
 .pedit{width:38px;height:38px;border-radius:50%;border:0;background:var(--card);box-shadow:var(--sh);font-size:15px}
+/* ---------- ventana QR ---------- */
+.lgc{display:inline-flex;align-items:center;justify-content:center;border-radius:11px;overflow:hidden;flex:none;box-shadow:0 0 0 1px rgba(255,255,255,.4),0 5px 12px rgba(0,0,0,.28)}
+.lgc img{display:block;width:auto}
+.lgc.lgl{background:rgba(255,255,255,.96);color:var(--c1);font-weight:900;border-radius:50%}
+.llc-act button.qrb{width:auto;padding:0 12px;border-radius:99px;display:flex;align-items:center;gap:5px;font-weight:800;font-size:13px;background:rgba(255,255,255,.95);color:var(--c1);box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.qrw{display:flex;flex-direction:column}
+.qrh{margin:4px -4px 0;border-radius:24px;padding:14px 16px 56px;color:#fff;position:relative;background:var(--noise) 0 0/160px 160px,radial-gradient(120% 140% at 100% 0%,rgba(255,255,255,.4),transparent 55%),linear-gradient(135deg,var(--c1),var(--c2));box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 18px 34px -12px var(--c1)}
+.qrh1{display:flex;justify-content:space-between;align-items:center}
+.qrx{width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.22);color:#fff;font-size:15px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.qrt{font-size:25px;font-weight:800;letter-spacing:-.03em;margin-top:14px}
+.qrs{opacity:.85;font-size:14.5px;font-weight:600;margin-top:2px}
+.qrseg{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;border-radius:16px;background:var(--soft);margin:12px 0 0}
+.qrseg button{border:0;border-radius:12px;padding:10px 6px;background:none;color:var(--mut);font-weight:700;font-size:13.5px}
+.qrseg button.on{background:var(--card);color:var(--ink);box-shadow:var(--sh)}
+.qrcard{position:relative;margin:-40px auto 0;width:min(264px,74%);padding:16px;border-radius:26px;background:#fff;box-shadow:0 20px 40px -12px rgba(0,0,0,.35),0 0 0 1px rgba(0,0,0,.04)}
+.qrcard i{position:absolute;width:26px;height:26px;border:4px solid var(--c1);pointer-events:none}
+.qrcard .c1{left:7px;top:7px;border-right:0;border-bottom:0;border-radius:12px 0 0 0}.qrcard .c2{right:7px;top:7px;border-left:0;border-bottom:0;border-radius:0 12px 0 0}
+.qrcard .c3{left:7px;bottom:7px;border-right:0;border-top:0;border-radius:0 0 0 12px}.qrcard .c4{right:7px;bottom:7px;border-left:0;border-top:0;border-radius:0 0 12px 0}
+.qrimg svg,.qrimg .qroff{display:block;width:100%;height:auto;border-radius:6px}
+.qrchip{align-self:center;margin-top:12px;padding:8px 16px;border-radius:99px;background:var(--gs);color:var(--g);font-weight:700;font-size:14px;text-align:center}
+.qrhint{text-align:center;color:var(--mut);font-size:12.5px;margin:12px 10px 4px;line-height:1.4}
+.qrdet{margin:12px 0 4px;border-radius:20px;background:var(--soft);padding:4px 16px}
+.qrdet>div{display:flex;flex-direction:column;padding:10px 0;border-bottom:1px solid var(--line)}
+.qrdet>div:last-child{border-bottom:0}
+.qrdet small{color:var(--mut);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.qrdet b{font-size:15.5px;margin-top:2px}
+.qrdet .qrnum{position:relative;cursor:pointer}.qrdet .qrnum b{font-size:22px;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.qrdet .qrnum span{position:absolute;right:0;top:50%;transform:translateY(-40%);font-size:12px;font-weight:800;color:var(--g);background:var(--gs);padding:6px 10px;border-radius:99px}
+.qract{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0 4px}
+.qract button{border:0;border-radius:18px;padding:12px 2px 10px;background:var(--card);box-shadow:var(--sh);color:var(--ink);font-weight:700;font-size:12px;display:flex;flex-direction:column;align-items:center;gap:5px}
+.qract button i{font-style:normal;font-size:22px}
+[data-theme=black] .qract button,[data-theme=black] .qrdet{background:#0d1210}
+/* ---------- ¿te pagaron? ---------- */
+.pyopts{display:flex;flex-direction:column;gap:8px;margin-top:6px;max-height:260px;overflow-y:auto;padding:2px}
+.pyopt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:0;border-radius:18px;padding:11px 12px;background:var(--soft);color:var(--ink);font:inherit;transition:transform .3s var(--spring),box-shadow .25s}
+.pyopt:active{transform:scale(.98)}
+.pyopt i{font-style:normal;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--card);box-shadow:var(--sh);font-size:18px;flex:none}
+.pyopt span{flex:1;min-width:0;display:flex;flex-direction:column}.pyopt b{font-size:15px}.pyopt small{color:var(--mut);font-size:12.5px;margin-top:1px}
+.pyopt em{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:none}
+.pyopt.on{background:var(--gs);box-shadow:0 0 0 2px var(--g)}
+.pyopt.on em{background:var(--g);border-color:var(--g);box-shadow:inset 0 0 0 4px var(--gs)}
+.llact button.pend{background:var(--ys);color:var(--y)}
+/* ---------- giro de tarjetas (corrige que se vea el frente en Safari) ---------- */
+.flipin{-webkit-transform-style:preserve-3d;transform-style:preserve-3d}
+.flipin>.ccard{-webkit-backface-visibility:hidden;backface-visibility:hidden;visibility:visible;transition:visibility 0s linear .2s}
+.flipin>.cback{visibility:hidden;display:flex;flex-direction:column;justify-content:space-between;gap:10px}
+.flipwrap.flipped .flipin>.ccard:not(.cback){visibility:hidden}
+.flipwrap.flipped .flipin>.cback{visibility:visible}
+.cback .bh{display:flex;justify-content:space-between;align-items:center;gap:10px;font-weight:800;font-size:16px;letter-spacing:-.01em;position:relative;z-index:1}
+.cback .bh span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cback .bh small{font-size:11.5px;font-weight:600;opacity:.8;white-space:nowrap}
+.cback .cgrid div{padding:8px 9px}.cback .cgrid small{font-size:11px}.cback .cgrid b{font-size:13.5px}
+@media(prefers-reduced-motion:reduce){.flipin>.ccard{transition:none}}
 </style>
 </head>
 <body>
@@ -806,6 +859,7 @@ svg rect[data-tip].tsel{fill:rgba(120,140,130,.16)}
 <div id="fan" class="fan hide"></div>
 <div id="nkp" class="nkp hide"><div class="nktop"><span id="nk-v">$ 0</span><button class="nkdone" onclick="closeKeypad()">Listo</button></div><div class="nkgrid" id="nk-grid"></div><button class="nklink" onclick="kpNative()">⌨️ Usar el teclado del sistema</button></div>
 <input type="file" id="avImg" accept="image/*" class="hide">
+<input type="file" id="qrFile" accept="image/*" class="hide" onchange="qrFilePicked(this)">
 <div id="tip" class="tip hide"></div><canvas id="confetti" class="hide"></canvas>
 <div id="wrap" class="wrap hide"><div class="wbar" id="wbar"></div><button class="wx" onclick="closeWrapped()" aria-label="Cerrar">✕</button><div class="wl" onclick="wrapGo(-1)"></div><div class="wr" onclick="wrapGo(1)"></div><div id="wslide" class="wslide"></div></div>
 <div id="sheetBack" class="back hide" onclick="if(event.target===this)closeSheet()"><div class="sheet" id="sheet"></div></div>
@@ -833,8 +887,8 @@ const prSave=()=>{try{localStorage.setItem(PRK,JSON.stringify(PR))}catch(e){}};
 let INVITE=null;
 const KEY=keyOf(PID);
 const FRESH=!localStorage.getItem(KEY);
-const defState=()=>({movs:[],bud:{...BUD0},cats:[...CATS0],ings:[...INGS0],cards:defCards(),pagos:[],deudas:[],alertDays:3,hormiga:20000,autoLoc:false,hideStart:false,startDay:1,dupOk:[],personas:['Yo','Pareja','Hijos','Mascota','Familia'],backupDays:15,lastBackup:'',firstUse:new Date().toISOString().slice(0,10),theme:'auto',avatars:{},veil:true,llaves:[],perfil:{},cuentas:[],ccNext:1,alzaOk:[],alzaPct:5});
-function fixState(s){s.cats=s.cats||[...CATS0];s.ings=s.ings||[...INGS0];s.bud=s.bud||{...BUD0};s.cards=s.cards||defCards();s.pagos=s.pagos||[];s.deudas=s.deudas||[];s.alertDays=s.alertDays??3;s.hormiga=s.hormiga??20000;s.autoLoc=!!s.autoLoc;s.hideStart=!!s.hideStart;s.startDay=s.startDay||1;s.dupOk=s.dupOk||[];s.personas=s.personas||['Yo','Pareja','Hijos','Mascota','Familia'];s.backupDays=s.backupDays??15;s.lastBackup=s.lastBackup||'';s.firstUse=s.firstUse||new Date().toISOString().slice(0,10);s.theme=s.theme||'auto';s.avatars=s.avatars||{};s.veil=s.veil!==false;s.llaves=s.llaves||[];s.perfil=s.perfil||{};s.cuentas=s.cuentas||[];s.ccNext=s.ccNext||1;s.alzaOk=s.alzaOk||[];s.alzaPct=s.alzaPct||5;return s}
+const defState=()=>({movs:[],bud:{...BUD0},cats:[...CATS0],ings:[...INGS0],cards:defCards(),pagos:[],deudas:[],alertDays:3,hormiga:20000,autoLoc:false,hideStart:false,startDay:1,dupOk:[],personas:['Yo','Pareja','Hijos','Mascota','Familia'],backupDays:15,lastBackup:'',firstUse:new Date().toISOString().slice(0,10),theme:'auto',avatars:{},veil:true,llaves:[],perfil:{},cuentas:[],ccNext:1,alzaOk:[],alzaPct:5,cobrosPend:[]});
+function fixState(s){s.cats=s.cats||[...CATS0];s.ings=s.ings||[...INGS0];s.bud=s.bud||{...BUD0};s.cards=s.cards||defCards();s.pagos=s.pagos||[];s.deudas=s.deudas||[];s.alertDays=s.alertDays??3;s.hormiga=s.hormiga??20000;s.autoLoc=!!s.autoLoc;s.hideStart=!!s.hideStart;s.startDay=s.startDay||1;s.dupOk=s.dupOk||[];s.personas=s.personas||['Yo','Pareja','Hijos','Mascota','Familia'];s.backupDays=s.backupDays??15;s.lastBackup=s.lastBackup||'';s.firstUse=s.firstUse||new Date().toISOString().slice(0,10);s.theme=s.theme||'auto';s.avatars=s.avatars||{};s.veil=s.veil!==false;s.llaves=s.llaves||[];s.perfil=s.perfil||{};s.cuentas=s.cuentas||[];s.ccNext=s.ccNext||1;s.alzaOk=s.alzaOk||[];s.alzaPct=s.alzaPct||5;s.cobrosPend=s.cobrosPend||[];return s}
 function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.movs)return fixState(s)}catch(e){}return defState()}
 let S=load(),CATS=S.cats,INGS=S.ings;
 const sync=()=>{CATS=S.cats;INGS=S.ings};
@@ -862,7 +916,7 @@ function diffKey(a,b){
   }
   return{v:true,old:A,new:B};
 }
-const HL={movs:'movimientos',pagos:'pagos',deudas:'deudas',cards:'tarjetas',bud:'presupuestos',cats:'categorías',ings:'categorías de ingreso',personas:'personas',avatars:'avatares',llaves:'llaves de pago',cuentas:'cuentas de cobro',perfil:'mis datos de cobro',startDay:'el mes financiero',alzaOk:'avisos de facturas'};
+const HL={movs:'movimientos',pagos:'pagos',deudas:'deudas',cards:'tarjetas',bud:'presupuestos',cats:'categorías',ings:'categorías de ingreso',personas:'personas',avatars:'avatares',llaves:'llaves de pago',cuentas:'cuentas de cobro',perfil:'mis datos de cobro',startDay:'el mes financiero',alzaOk:'avisos de facturas',cobrosPend:'cobros pendientes'};
 function labelFor(patch){
   const ks=Object.keys(patch),out=[];
   ks.forEach(k=>{
@@ -1007,8 +1061,8 @@ function renderList(){
 }
 
 /* ---------- hoja de detalle ---------- */
-function openSheet(html){$('sheet').innerHTML='<div class="grab"></div>'+html;$('sheetBack').classList.remove('hide')}
-function closeSheet(){$('sheetBack').classList.add('hide')}
+function openSheet(html){if(typeof QRS!=='undefined'&&QRS)QRS.open=false;$('sheet').innerHTML='<div class="grab"></div>'+html;$('sheetBack').classList.remove('hide')}
+function closeSheet(){$('sheetBack').classList.add('hide');if(typeof qrClosed==='function')qrClosed()}
 function detailOpen(id){
   const x=S.movs.find(m=>m.id===id);if(!x)return;
   openSheet(`<div class="sub">${x.tipo} · ${x.fecha} ${x.hora}</div><div class="big2">${cop(x.monto)}</div>
@@ -2088,7 +2142,7 @@ function cardHtml(c,i){
       <div class="ub"><i style="width:${Math.min(100,p*100)}%"></i></div>
       <div class="ft"><span>Usado ${cop(d)}</span><span>${c.cupo?Math.round(p*100)+'%':''}</span><span>Cupo ${cop(c.cupo||0)}</span></div>
     </div>
-    <div class="ccard cback${f?' fin-'+f:''}" style="background:${bg}"><div class="stripe"></div>
+    <div class="ccard cback${f?' fin-'+f:''}" style="background:${bg}"><div class="bh"><span>${esc(cname(c))}</span><small>↩ toca para volver</small></div>
       <div class="cgrid"><div><small>Disponible</small><b>${c.cupo?cop(c.cupo-deuda(c)):'—'}</b></div><div><small>Usado</small><b>${cop(d)}</b></div>
         <div><small>Corte</small><b>${nc?'día '+c.corte+' · '+nc.days+' d':'—'}</b></div><div><small>Pago</small><b>${np?'día '+c.pago+' · '+np.days+' d':'—'}</b></div>
         <div><small>Tasa mes</small><b>${c.tasa?c.tasa+'%':'—'}</b></div><div><small>Manejo</small><b>${c.manejo?cop(c.manejo):'—'}</b></div></div>
@@ -2382,10 +2436,10 @@ document.addEventListener('keydown',e=>{
 
 /* ---------- llaves de pago ---------- */
 const LL_TIPOS=[
-  {k:'Nequi',c:'#c026d3',ph:'Número de celular',bank:false},
-  {k:'Daviplata',c:'#ef4444',ph:'Número de celular',bank:false},
-  {k:'Banco de Bogotá',c:'#1d4ed8',ph:'Número de cuenta',bank:true},
-  {k:'Nu Bank',c:'#7c3aed',ph:'Número de cuenta o llave',bank:true},
+  {k:'Nequi',c:'#da0081',ph:'Número de celular',bank:false},
+  {k:'Daviplata',c:'#ed1c24',ph:'Número de celular',bank:false},
+  {k:'Banco de Bogotá',c:'#14327d',ph:'Número de cuenta',bank:true},
+  {k:'Nu Bank',c:'#8a05be',ph:'Número de cuenta o llave',bank:true},
   {k:'Bre-B',c:'#0d9488',ph:'Llave Bre-B (celular, correo, documento…)',bank:false},
   {k:'Otra',c:'#64748b',ph:'Dato de pago',bank:false}
 ];
@@ -2421,7 +2475,7 @@ function llRender(isEdit){
 function llSet(k,v,rerender){LLF[k]=v;if(rerender)llRender(!!LLF.id)}
 function saveLl(id){
   const valor=String(LLF.valor||'').trim();if(!valor)return toast('Escribe el dato de pago','r');
-  const o={id:id||(Date.now().toString(36)+Math.random().toString(36).slice(2,5)),tipo:LLF.tipo,alias:String(LLF.alias||'').trim(),valor,titular:String(LLF.titular||'').trim(),cuentaTipo:llTipo(LLF.tipo).bank?(LLF.cuentaTipo||'Ahorros'):'',doc:String(LLF.doc||'').trim(),principal:!!LLF.principal};
+  const o={id:id||(Date.now().toString(36)+Math.random().toString(36).slice(2,5)),tipo:LLF.tipo,alias:String(LLF.alias||'').trim(),valor,titular:String(LLF.titular||'').trim(),cuentaTipo:llTipo(LLF.tipo).bank?(LLF.cuentaTipo||'Ahorros'):'',doc:String(LLF.doc||'').trim(),principal:!!LLF.principal,qr:LLF.qr||''};
   S.llaves=S.llaves||[];
   if(o.principal)S.llaves.forEach(x=>x.principal=false);
   const i=S.llaves.findIndex(x=>x.id===o.id);if(i>=0)S.llaves[i]=o;else S.llaves.push(o);
@@ -2939,19 +2993,12 @@ function llCopy(id){const l=(S.llaves||[]).find(x=>x.id===id);if(!l)return;llCop
 function llShare(id){const l=(S.llaves||[]).find(x=>x.id===id);if(!l)return;const t=llLine(l);if(navigator.share)navigator.share({text:t}).catch(()=>{});else llCopyText(t,'📋 Datos copiados')}
 function llShareAll(){const ls=S.llaves||[];if(!ls.length)return;const t='Puedes pagarme por:\n'+ls.map(l=>'• '+llLine(l)).join('\n');if(navigator.share)navigator.share({text:t}).catch(()=>{});else llCopyText(t,'📋 Todas mis llaves copiadas')}
 function llNew(k){llSheet(-1);LLF.tipo=k;llRender(false)}
-function llCard(l){
-  const t=llTipo(l.tipo),v=fmtVal(l.tipo,l.valor),id=esc(l.id);
-  return`<div class="llc" style="--c1:${t.c};--c2:${llShade(t.c,-.5)}" onclick="llCopy('${id}')">
-    <div class="llc-top"><span class="llc-logo">${esc(t.k.charAt(0))}</span><span class="llc-brand">${esc(llName(l))}</span>${l.principal?'<span class="llc-star">⭐ Principal</span>':''}</div>
-    <div class="llc-num">${esc(HIDE?llMask(v):v)}</div>
-    <div class="llc-bot"><span>${esc(l.titular||t.k)}${t.bank&&l.cuentaTipo?' · '+esc(l.cuentaTipo):''}</span><span class="llc-act"><button aria-label="Compartir" onclick="event.stopPropagation();llShare('${id}')">📤</button><button aria-label="Editar" onclick="event.stopPropagation();llSheet('${id}')">✏️</button></span></div></div>`;
-}
 function renderLlaves(){
   const w=$('llWallet'),ls=S.llaves||[];
   if(w){
-    w.innerHTML=ls.length?`<div class="llh"><div><b>🔑 Mis llaves de pago</b><small>Toca una tarjeta para copiar el dato</small></div><button class="llplus" onclick="llSheet(-1)" aria-label="Añadir llave">＋</button></div>
+    w.innerHTML=ls.length?`<div class="llh"><div><b>🔑 Mis llaves de pago</b><small>Toca una tarjeta para ver su código QR</small></div><button class="llplus" onclick="llSheet(-1)" aria-label="Añadir llave">＋</button></div>
       <div class="llcar">${ls.map(llCard).join('')}<div class="llc add" onclick="llSheet(-1)"><b>＋</b><span>Añadir llave</span></div></div>
-      <div class="llact"><button onclick="cobroSheet(null)">💸 Cobrar</button><button onclick="llShareAll()">📤 Compartir todas</button></div>`
+      <div class="llact"><button onclick="qrMain()">▦ Mi QR</button>${(S.cobrosPend||[]).length?`<button class="pend" onclick="pendSheet()">⏳ Por confirmar (${S.cobrosPend.length})</button>`:''}<button onclick="cobroSheet(null)">💸 Cobrar</button><button onclick="llShareAll()">📤 Compartir todas</button></div>`
     :`<div class="llempty"><div class="lle-t">🔑 Tus llaves de pago, a un toque</div><div class="lle-s">Guárdalas una vez y cópialas o compártelas cuando alguien te vaya a pagar.</div>
       <div class="lle-p">${LL_TIPOS.slice(0,5).map(t=>`<button style="--c1:${t.c}" onclick="llNew('${t.k}')">${esc(t.k)}</button>`).join('')}</div></div>`;
   }
@@ -3069,6 +3116,301 @@ function profBoot(){
   else if(PR.ask&&PR.list.length>1&&!ok)setTimeout(()=>profSheet(true),400);
   else if(INVITE&&!cEnabled())setTimeout(cloudSheet,500);
 }
+const LL_LOGO={"Banco de Bogotá": {"s": "data:image/png;base64,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", "bg": "#14327d", "w": 75, "h": 72}, "Daviplata": {"s": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAABICAMAAAAJWw0gAAABgFBMVEX//////v7+///9///8///+/f38/fz8+vr79/b69PT68PD67ez66en55uX54+P439/429z42Nn41NX20ND2zM72x8n1wcT0vsD0ubv0srTzrrDzqa3yo6fxm5/ylJfvlJjwi5DwhInufILudn3uc3jtbnTsZ27sX2brWmLsV1/sVV7sUlvrTFTqR0/qQkzpPkfpOULpND3pLznqKjTmKTPrIy3oJC7sISvpISzsHyrrICrrHyrrHynrHyjqICrqHyrqHynqHyjnICnsHSfrHinrHijrHifrHSfqHinqHijqHifqHSjqHSfqHSXoHSbsHCfrHCbrHCXqHCfqHCbqHCXoHCfsGybrGybrGiTqGyXqGiTsGSPqGCLrFyHqFyHoGiTlGiToGCLoFiHrFR/qFR/qEx3pFB7qERzpEhzpERnnFB7nEx3nEhzqEBrpEBvpDxrqDhnpDhnrDRfpDRjnDxrnDhjoDRjnDRfqDBjpCxXoDBbnDBfoCxXpChXnChToBQ+NVwihAAAKZUlEQVR42u2Z51saSxuHhyJdQelVASkq0kT04LpZNCvvmsEQiQJKCcgKIiJIETHAv/7OoomaY66jV/DyS+YDsA1unja/eQZE44mvifj7DXCQiB98ie+9H0Dia/xdB4i/O8DeewPE/wK8xYAUtQvfDQAS4aNiuZjCCPgeAMRmttcIelzeg17jGKPuke4HfGsASMQur/0WpVggFEg09sANvUOgs4mL3mg00rtvChAlEs2CUy2Q6G1u37JVIxLpl1tnETx94LSOhj1YgG8IQMSaOZuMr3F+urmiM+e964BNwVMunNdxNX9qNIRSXxa+FQBF1r/ZpgRGb6OWwjASUgSW7lSXtTy5y8nzVHLf8vl8UGLuE28DAEN01SEVmAK9YngT/oyIHbrj0fFFk+vHscPkYawqM39/GwAseeNRcQ3+biZExp7YBTttujUC9ym1B6msX7Bw8RYAELvcmuWq3L0M/u88ozbKFc96iomRukO4kn6DGCDSbcekxN6m154vPBQ8ze2jd7xvmqlExp4FEGsEtBzjen37f6nfBuidn27V2hti3ADhxLVDJFu+PsT/89bI+bT5Zn3MADidN3JN+VLo83/qCpg6EBuGR2MNQhhqemdEC7df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", "bg": "#e91d24", "w": 128, "h": 72}, "Nequi": {"s": "data:image/png;base64,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", "bg": "#f3f3f5", "w": 163, "h": 72}, "Nu Bank": {"s": "data:image/png;base64,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", "bg": "#8a05be", "w": 128, "h": 72}};
+/* ---------- generador de códigos QR (propio, sin librerías) ---------- */
+const QR=(()=>{
+  const ECC_PB=[[-1,7,10,15,20,26,18,20,24,30,18,20,24,26,30,22,24,28,30,28,28,28,28,30,30,26,28,30,30,30,30,30,30,30,30,30,30,30,30,30,30],
+    [-1,10,16,26,18,24,16,18,22,22,26,30,22,22,24,24,28,28,26,26,26,26,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28],
+    [-1,13,22,18,26,18,24,18,22,20,24,28,26,24,20,30,24,28,28,26,30,28,30,30,30,30,28,30,30,30,30,30,30,30,30,30,30,30,30,30,30],
+    [-1,17,28,22,16,22,28,26,26,24,28,24,28,22,24,24,30,28,28,26,28,30,24,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30]];
+  const NBLK=[[-1,1,1,1,1,1,2,2,2,2,4,4,4,4,4,6,6,6,6,7,8,8,9,9,10,12,12,12,13,14,15,16,17,18,19,19,20,21,22,24,25],
+    [-1,1,1,1,2,2,4,4,4,5,5,5,8,9,9,10,10,11,13,14,16,17,17,18,20,21,23,25,26,28,29,31,33,35,37,38,40,43,45,47,49],
+    [-1,1,1,2,2,4,4,6,6,8,8,8,10,12,16,12,17,16,18,21,20,23,23,25,27,29,34,34,35,38,40,43,45,48,51,53,56,59,62,65,68],
+    [-1,1,1,2,4,4,4,5,6,8,8,11,11,16,16,18,16,19,21,25,25,25,34,30,32,35,37,40,42,45,48,51,54,57,60,63,66,70,74,77,81]];
+  const LV={L:0,M:1,Q:2,H:3},FB={L:1,M:0,Q:3,H:2};
+  const rawMods=v=>{let r=(16*v+128)*v+64;if(v>=2){const n=Math.floor(v/7)+2;r-=(25*n-10)*n-55;if(v>=7)r-=36}return r};
+  const dataCW=(v,e)=>Math.floor(rawMods(v)/8)-ECC_PB[e][v]*NBLK[e][v];
+  const gmul=(x,y)=>{let z=0;for(let i=7;i>=0;i--){z=(z<<1)^((z>>>7)*0x11D);z^=((y>>>i)&1)*x}return z&255};
+  const rsDiv=d=>{const c=[];for(let i=0;i<d-1;i++)c.push(0);c.push(1);let root=1;for(let i=0;i<d;i++){for(let j=0;j<c.length;j++){c[j]=gmul(c[j],root);if(j+1<c.length)c[j]^=c[j+1]}root=gmul(root,2)}return c};
+  const rsRem=(data,div)=>{const r=div.map(()=>0);for(const b of data){const f=b^r.shift();r.push(0);div.forEach((c,i)=>{r[i]^=gmul(c,f)})}return r};
+  const utf8=s=>Array.from(new TextEncoder().encode(s));
+  function encode(text,ecl,minV,forceMask){
+    const e=LV[ecl||'M'],bytes=utf8(String(text));
+    let v=minV||1,bits;
+    for(;;v++){
+      if(v>40)throw new Error('Texto demasiado largo para un QR');
+      const cc=v<10?8:16;if(bytes.length>=(1<<cc))continue;
+      if(4+cc+8*bytes.length<=dataCW(v,e)*8){bits=[];break}
+    }
+    const push=(val,n)=>{for(let i=n-1;i>=0;i--)bits.push((val>>>i)&1)};
+    push(4,4);push(bytes.length,v<10?8:16);bytes.forEach(b=>push(b,8));
+    const cap=dataCW(v,e)*8;push(0,Math.min(4,cap-bits.length));push(0,(8-bits.length%8)%8);
+    for(let p=0xEC;bits.length<cap;p^=0xEC^0x11)push(p,8);
+    const data=[];for(let i=0;i<bits.length;i+=8){let b=0;for(let j=0;j<8;j++)b=(b<<1)|bits[i+j];data.push(b)}
+    // bloques + corrección de errores
+    const nb=NBLK[e][v],eccLen=ECC_PB[e][v],raw=Math.floor(rawMods(v)/8),ns=nb-raw%nb,sl=Math.floor(raw/nb);
+    const div=rsDiv(eccLen),blocks=[];
+    for(let i=0,k=0;i<nb;i++){const dat=data.slice(k,k+sl-eccLen+(i<ns?0:1));k+=dat.length;const ecc=rsRem(dat,div);if(i<ns)dat.push(0);blocks.push(dat.concat(ecc))}
+    const all=[];
+    for(let i=0;i<blocks[0].length;i++)blocks.forEach((b,j)=>{if(i!==sl-eccLen||j>=ns)all.push(b[i])});
+    // matriz
+    const size=v*4+17,M=Array.from({length:size},()=>Array(size).fill(false)),F=Array.from({length:size},()=>Array(size).fill(false));
+    const set=(x,y,d)=>{M[y][x]=d;F[y][x]=true};
+    for(let i=0;i<size;i++){set(6,i,i%2===0);set(i,6,i%2===0)}
+    const finder=(cx,cy)=>{for(let dy=-4;dy<=4;dy++)for(let dx=-4;dx<=4;dx++){const d=Math.max(Math.abs(dx),Math.abs(dy)),x=cx+dx,y=cy+dy;if(x>=0&&x<size&&y>=0&&y<size)set(x,y,d!==2&&d!==4)}};
+    finder(3,3);finder(size-4,3);finder(3,size-4);
+    const al=[];if(v>1){const n=Math.floor(v/7)+2,step=v===32?26:Math.ceil((v*4+4)/(n*2-2))*2;al.push(6);for(let i=0,pos=size-7;i<n-1;i++,pos-=step)al.splice(1,0,pos)}
+    for(let i=0;i<al.length;i++)for(let j=0;j<al.length;j++){
+      if((i===0&&j===0)||(i===0&&j===al.length-1)||(i===al.length-1&&j===0))continue;
+      for(let dy=-2;dy<=2;dy++)for(let dx=-2;dx<=2;dx++)set(al[i]+dx,al[j]+dy,Math.max(Math.abs(dx),Math.abs(dy))!==1)}
+    const drawFmt=m=>{
+      const d=(FB[ecl||'M']<<3)|m;let r=d;for(let i=0;i<10;i++)r=(r<<1)^((r>>>9)*0x537);
+      const b=((d<<10)|r)^0x5412,g=i=>((b>>>i)&1)!==0;
+      for(let i=0;i<=5;i++)set(8,i,g(i));set(8,7,g(6));set(8,8,g(7));set(7,8,g(8));for(let i=9;i<15;i++)set(14-i,8,g(i));
+      for(let i=0;i<8;i++)set(size-1-i,8,g(i));for(let i=8;i<15;i++)set(8,size-15+i,g(i));set(8,size-8,true)};
+    drawFmt(0);
+    if(v>=7){let r=v;for(let i=0;i<12;i++)r=(r<<1)^((r>>>11)*0x1F25);const b=(v<<12)|r;for(let i=0;i<18;i++){const c=((b>>>i)&1)!==0,a=size-11+i%3,q=Math.floor(i/3);set(a,q,c);set(q,a,c)}}
+    // datos en zigzag
+    let bi=0;
+    for(let right=size-1;right>=1;right-=2){if(right===6)right=5;
+      for(let vert=0;vert<size;vert++)for(let j=0;j<2;j++){const x=right-j,up=((right+1)&2)===0,y=up?size-1-vert:vert;
+        if(!F[y][x]&&bi<all.length*8){M[y][x]=((all[bi>>>3]>>>(7-(bi&7)))&1)!==0;bi++}}}
+    const mask=m=>{for(let y=0;y<size;y++)for(let x=0;x<size;x++){let inv;
+      switch(m){case 0:inv=(x+y)%2===0;break;case 1:inv=y%2===0;break;case 2:inv=x%3===0;break;case 3:inv=(x+y)%3===0;break;
+        case 4:inv=(Math.floor(x/3)+Math.floor(y/2))%2===0;break;case 5:inv=x*y%2+x*y%3===0;break;case 6:inv=(x*y%2+x*y%3)%2===0;break;default:inv=((x+y)%2+x*y%3)%2===0}
+      if(!F[y][x]&&inv)M[y][x]=!M[y][x]}};
+    const penalty=()=>{
+      let r=0;const run=(get)=>{for(let a=0;a<size;a++){let c=get(a,0),n=1;for(let b=1;b<size;b++){const t=get(a,b);if(t===c)n++;else{if(n>=5)r+=3+n-5;c=t;n=1}}if(n>=5)r+=3+n-5}};
+      run((a,b)=>M[a][b]);run((a,b)=>M[b][a]);
+      for(let y=0;y<size-1;y++)for(let x=0;x<size-1;x++){const c=M[y][x];if(c===M[y][x+1]&&c===M[y+1][x]&&c===M[y+1][x+1])r+=3}
+      const pat=[true,false,true,true,true,false,true,false,false,false,false],rev=[...pat].reverse();
+      const scan=get=>{for(let a=0;a<size;a++)for(let b=0;b<=size-11;b++){let p=true,q=true;for(let k=0;k<11;k++){const t=get(a,b+k);if(t!==pat[k])p=false;if(t!==rev[k])q=false;if(!p&&!q)break}if(p||q)r+=40}};
+      scan((a,b)=>M[a][b]);scan((a,b)=>M[b][a]);
+      let dark=0;for(const row of M)for(const c of row)if(c)dark++;
+      r+=Math.floor(Math.abs(dark*20-size*size*10)/(size*size))*10;return r};
+    let best=0,bp=Infinity;
+    const ms=forceMask!==undefined?[forceMask]:[0,1,2,3,4,5,6,7];
+    for(const m of ms){mask(m);drawFmt(m);const p=forceMask!==undefined?0:penalty();if(p<bp){bp=p;best=m}mask(m)}
+    mask(best);drawFmt(best);
+    return{size,version:v,mask:best,get:(x,y)=>M[y][x]};
+  }
+  const svg=(q,o)=>{o=o||{};const quiet=o.quiet??4,fg=o.fg||'#000',bg=o.bg||'#fff',n=q.size+quiet*2;let d='';
+    for(let y=0;y<q.size;y++)for(let x=0;x<q.size;x++)if(q.get(x,y))d+=`M${x+quiet} ${y+quiet}h1v1h-1z`;
+    return`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${n} ${n}" shape-rendering="crispEdges"${o.cls?` class="${o.cls}"`:''}><rect width="${n}" height="${n}" fill="${bg}"/><path d="${d}" fill="${fg}"/></svg>`};
+  const draw=(ctx,q,x0,y0,px,fg)=>{ctx.fillStyle=fg||'#000';for(let y=0;y<q.size;y++)for(let x=0;x<q.size;x++)if(q.get(x,y))ctx.fillRect(Math.round(x0+x*px),Math.round(y0+y*px),Math.ceil(px),Math.ceil(px))};
+  return{encode,svg,draw};
+})();
+
+/* ---------- ventana de cobro con QR ---------- */
+const qrMoney=n=>'$'+Math.round(n).toLocaleString('es-CO');
+let QRS={id:'',monto:0,concepto:'',mode:'data'};
+function qrFind(){return (S.llaves||[]).find(x=>x.id===QRS.id)}
+function qrDet(l){
+  const t=llTipo(l.tipo);
+  return{titular:String(l.titular||(S.perfil&&S.perfil.nombre)||'').trim(),doc:String(l.doc||(S.perfil&&S.perfil.doc)||'').trim(),
+    val:fmtVal(l.tipo,l.valor),name:llName(l),cuenta:t.bank&&l.cuentaTipo?'Cuenta de '+l.cuentaTipo.toLowerCase():''};
+}
+function qrPlain(l){
+  const d=qrDet(l),a=['PAGO A: '+(d.titular||'—'),d.name+(d.cuenta?' ('+d.cuenta.toLowerCase()+')':'')+': '+d.val];
+  if(d.doc)a.push('CC/NIT: '+d.doc);
+  if(QRS.monto>0)a.push('Monto: '+qrMoney(QRS.monto));
+  if(QRS.concepto.trim())a.push('Concepto: '+QRS.concepto.trim());
+  return a.join('\n');
+}
+function qrMsg(l){return'Hola 👋 Estos son mis datos para pagarme:\n\n'+qrPlain(l).replace('PAGO A: ','Titular: ')+'\n\n¡Gracias! 🙏'}
+function qrMain(){const ls=S.llaves||[];const l=ls.find(x=>x.principal)||ls[0];if(!l)return toast('Primero añade una llave','y');qrSheet(l.id)}
+function qrSheet(id){
+  const l=(S.llaves||[]).find(x=>x.id===id);if(!l)return;
+  QRS={id,monto:0,concepto:'',mode:l.qr?'bank':'data'};qrRender();
+}
+function qrLogo(l,h){
+  const lg=LL_LOGO[l.tipo];
+  return lg?`<span class="lgc" style="height:${h}px"><img src="${lg.s}" alt="${esc(l.tipo)}" style="height:${h}px"></span>`:`<span class="lgc lgl" style="height:${h}px;width:${h}px;font-size:${Math.round(h*.5)}px">${esc(llTipo(l.tipo).k.charAt(0))}</span>`;
+}
+function qrRender(){
+  const l=qrFind();if(!l)return;
+  const t=llTipo(l.tipo),d=qrDet(l),bank=QRS.mode==='bank'&&l.qr;
+  openSheet(`<div class="qrw" style="--c1:${t.c};--c2:${llShade(t.c,-.55)}">
+    <div class="qrh"><div class="qrh1">${qrLogo(l,40)}<button class="qrx" onclick="closeSheet()" aria-label="Cerrar">✕</button></div>
+      <div class="qrt">Escanea para pagarme</div><div class="qrs">${esc(d.titular||d.name)}</div></div>
+    ${l.qr?`<div class="qrseg"><button class="${!bank?'on':''}" onclick="QRS.mode='data';qrRender()">Mis datos</button><button class="${bank?'on':''}" onclick="QRS.mode='bank';qrRender()">QR de ${esc(t.k)}</button></div>`:''}
+    <div class="qrcard"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i><div id="qr-img" class="qrimg"></div></div>
+    <div class="qrchip hide" id="qr-chip"></div>
+    <div class="qrhint" id="qr-hint"></div>
+    <div class="qrdet">
+      <div><small>${esc(t.bank?'Banco':'Billetera')}</small><b>${esc(d.name)}${d.cuenta?' · '+esc(d.cuenta.replace('Cuenta de ',''))  :''}</b></div>
+      <div class="qrnum" onclick="llCopy('${esc(l.id)}')"><small>${esc(t.bank?'Número de cuenta':'Número')}</small><b>${esc(d.val)}</b><span>📋 Copiar</span></div>
+      ${d.titular?`<div><small>Titular</small><b>${esc(d.titular)}</b></div>`:''}
+      ${d.doc?`<div><small>CC / NIT</small><b>${esc(d.doc)}</b></div>`:''}
+    </div>
+    <label>Monto a cobrar (opcional)</label><input id="qr-m" inputmode="numeric" placeholder="$ 0" value="${QRS.monto?QRS.monto.toLocaleString('es-CO'):''}" oninput="qrMonto(this)" autocomplete="off">
+    <label>Concepto (opcional)</label><input id="qr-c" placeholder="Ej. Arriendo de noviembre" value="${esc(QRS.concepto)}" oninput="QRS.concepto=this.value;qrUpd()" autocomplete="off">
+    <div class="qract"><button onclick="qrWa()"><i>💬</i>WhatsApp</button><button onclick="qrMail()"><i>✉️</i>Correo</button><button onclick="qrShareImg()"><i>🖼️</i>Imagen</button><button onclick="qrCopy()"><i>📋</i>Copiar</button></div>
+    <button class="btn sec" onclick="qrOfficial()">${l.qr?'📷 Cambiar mi QR oficial':'📷 Subir mi QR oficial del banco'}</button>
+    ${l.qr?'<button class="btn sec danger" onclick="qrOfficialDel()">Quitar QR oficial</button>':''}
+    <div class="hint">Para pagar directo desde su app, sube el QR que genera ${esc(t.k)} (captura de «Mi QR»). El de «Mis datos» se lee con la cámara y muestra los datos para copiar.</div>
+  </div>`);
+  QRS.open=true;qrUpd();
+}
+function qrMonto(el){const n=parseInt(String(el.value).replace(/\D/g,''),10)||0;QRS.monto=n;el.value=n?n.toLocaleString('es-CO'):'';qrUpd()}
+function qrUpd(){
+  const l=qrFind();if(!l)return;
+  const bank=QRS.mode==='bank'&&l.qr,img=$('qr-img');if(!img)return;
+  if(bank)img.innerHTML=`<img src="${l.qr}" alt="QR oficial" class="qroff">`;
+  else{try{img.innerHTML=QR.svg(QR.encode(qrPlain(l),'M'),{fg:'#0b1220',bg:'#ffffff',quiet:2})}catch(e){img.textContent='No se pudo generar el QR'}}
+  const ch=$('qr-chip');if(ch){const a=[];if(QRS.monto>0)a.push('<b>'+qrMoney(QRS.monto)+'</b>');if(QRS.concepto.trim())a.push(esc(QRS.concepto.trim()));ch.innerHTML=a.join(' · ');ch.classList.toggle('hide',!a.length)}
+  const h=$('qr-hint');if(h)h.textContent=bank?`Escanéalo desde la app de ${llTipo(l.tipo).k} para pagar directo.`:'Apunta la cámara del celular al código: aparecerán los datos de pago para copiar.';
+}
+function qrWa(){const l=qrFind();if(!l)return;window.open('https://wa.me/?text='+encodeURIComponent(qrMsg(l)),'_blank')}
+function qrMail(){const l=qrFind();if(!l)return;const d=qrDet(l);window.open('mailto:?subject='+encodeURIComponent('Datos de pago'+(d.titular?' — '+d.titular:''))+'&body='+encodeURIComponent(qrMsg(l)+'\n\n(Te envío también el código QR como imagen.)'),'_self')}
+function qrCopy(){const l=qrFind();if(l)llCopyText(qrMsg(l),'📋 Datos copiados')}
+
+/* imagen compartible */
+const qrLoadImg=src=>new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=src});
+function qrRR(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
+async function qrCanvas(l){
+  const t=llTipo(l.tipo),d=qrDet(l),W=900,cv=document.createElement('canvas');
+  const lines=[];if(d.titular)lines.push(['Titular',d.titular]);if(d.doc)lines.push(['CC / NIT',d.doc]);if(QRS.monto>0)lines.push(['Monto',qrMoney(QRS.monto)]);if(QRS.concepto.trim())lines.push(['Concepto',QRS.concepto.trim()]);
+  const H=1346+lines.length*120;cv.width=W;cv.height=H;
+  const c=cv.getContext('2d');if(!c)throw new Error('canvas');
+  const F='system-ui,-apple-system,Segoe UI,Roboto,sans-serif';
+  const g=c.createLinearGradient(0,0,W,H);g.addColorStop(0,t.c);g.addColorStop(1,llShade(t.c,-.6));c.fillStyle=g;c.fillRect(0,0,W,H);
+  const rg=c.createRadialGradient(W,0,0,W,0,760);rg.addColorStop(0,'rgba(255,255,255,.38)');rg.addColorStop(1,'rgba(255,255,255,0)');c.fillStyle=rg;c.fillRect(0,0,W,H);
+  const lg=LL_LOGO[l.tipo];
+  if(lg){const im=await qrLoadImg(lg.s),h=100,w=Math.round(lg.w*h/lg.h);c.save();qrRR(c,70,64,w,h,24);c.clip();c.drawImage(im,70,64,w,h);c.restore()}
+  else{c.fillStyle='#fff';c.beginPath();c.arc(120,114,50,0,Math.PI*2);c.fill();c.fillStyle=t.c;c.font='900 56px '+F;c.textAlign='center';c.textBaseline='middle';c.fillText(t.k.charAt(0),120,118)}
+  c.textAlign='left';c.textBaseline='alphabetic';c.fillStyle='#fff';c.font='800 62px '+F;c.fillText('Escanea para pagarme',70,262);
+  c.globalAlpha=.85;c.font='600 36px '+F;c.fillText(d.titular||d.name,70,316);c.globalAlpha=1;
+  const px=90,py=360,ps=720;
+  c.save();c.shadowColor='rgba(0,0,0,.4)';c.shadowBlur=60;c.shadowOffsetY=24;c.fillStyle='#fff';qrRR(c,px,py,ps,ps,52);c.fill();c.restore();
+  if(QRS.mode==='bank'&&l.qr){const im=await qrLoadImg(l.qr),r=Math.min((ps-60)/im.width,(ps-60)/im.height),w=im.width*r,h=im.height*r;c.drawImage(im,px+(ps-w)/2,py+(ps-h)/2,w,h)}
+  else{const q=QR.encode(qrPlain(l),'M'),n=q.size+6,mod=Math.floor((ps-70)/n),tot=mod*n;QR.draw(c,q,px+(ps-tot)/2+mod*3,py+(ps-tot)/2+mod*3,mod,'#0b1220')}
+  let y=py+ps+86;
+  c.fillStyle='rgba(255,255,255,.72)';c.font='700 28px '+F;c.fillText((t.bank?'NÚMERO DE CUENTA':'NÚMERO').toUpperCase()+(d.cuenta?' · '+d.cuenta.replace('Cuenta de ','').toUpperCase():''),70,y);
+  y+=70;c.fillStyle='#fff';c.font='800 74px '+F;c.fillText(d.val,70,y);
+  lines.forEach(([k,v])=>{y+=78;c.fillStyle='rgba(255,255,255,.72)';c.font='700 26px '+F;c.fillText(k.toUpperCase(),70,y);y+=42;c.fillStyle='#fff';c.font='700 38px '+F;c.fillText(String(v).slice(0,34),70,y)});
+  c.fillStyle='rgba(255,255,255,.55)';c.font='600 26px '+F;c.textAlign='center';c.fillText('Hecho con Gastos',W/2,H-44);
+  return cv;
+}
+async function qrShareImg(){
+  const l=qrFind();if(!l)return;
+  try{
+    const cv=await qrCanvas(l);
+    const blob=await new Promise((res,rej)=>cv.toBlob(b=>b?res(b):rej(new Error('blob')),'image/png'));
+    const file=new File([blob],'pago-'+llName(l).replace(/\W+/g,'-').toLowerCase()+'.png',{type:'image/png'});
+    if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],text:qrMsg(l)});return}
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=file.name;document.body.appendChild(a);a.click();a.remove();toast('🖼️ Imagen guardada');
+  }catch(e){if(e&&e.name==='AbortError')return;toast('No pude generar la imagen','y')}
+}
+
+/* QR oficial del banco (captura) */
+function qrOfficial(){const f=$('qrFile');if(f){f.value='';f.click()}}
+function qrFilePicked(inp){
+  const file=inp.files&&inp.files[0];if(!file)return;
+  const fr=new FileReader();
+  fr.onload=()=>{const im=new Image();im.onload=()=>{
+    try{const r=Math.min(1,720/Math.max(im.width,im.height)),cv=document.createElement('canvas');cv.width=Math.round(im.width*r);cv.height=Math.round(im.height*r);
+      const c=cv.getContext('2d');c.fillStyle='#fff';c.fillRect(0,0,cv.width,cv.height);c.drawImage(im,0,0,cv.width,cv.height);
+      const l=qrFind();if(!l)return;l.qr=cv.toDataURL('image/jpeg',.86);persist();QRS.mode='bank';qrRender();renderLlaves();toast('✅ QR oficial guardado')}catch(e){toast('No pude leer esa imagen','y')}};
+    im.onerror=()=>toast('No pude leer esa imagen','y');im.src=fr.result};
+  fr.readAsDataURL(file);
+}
+function qrOfficialDel(){const l=qrFind();if(!l)return;l.qr='';persist();QRS.mode='data';qrRender();renderLlaves();toast('QR oficial quitado')}
+
+/* tarjeta de la cartera con logo */
+function llCard(l){
+  const t=llTipo(l.tipo),v=fmtVal(l.tipo,l.valor),id=esc(l.id),lg=LL_LOGO[l.tipo];
+  const brand=(!lg||(l.alias&&l.alias.trim()))?esc(llName(l)):'';
+  return`<div class="llc" style="--c1:${t.c};--c2:${llShade(t.c,-.55)}" onclick="qrSheet('${id}')">
+    <div class="llc-top">${qrLogo(l,34)}<span class="llc-brand">${brand}</span>${l.principal?'<span class="llc-star">⭐ Principal</span>':''}</div>
+    <div class="llc-num">${esc(HIDE?llMask(v):v)}</div>
+    <div class="llc-bot"><span>${esc(l.titular||t.k)}${t.bank&&l.cuentaTipo?' · '+esc(l.cuentaTipo):''}</span><span class="llc-act"><button aria-label="Copiar" onclick="event.stopPropagation();llCopy('${id}')">📋</button><button aria-label="Editar" onclick="event.stopPropagation();llSheet('${id}')">✏️</button><button class="qrb" aria-label="Ver QR" onclick="event.stopPropagation();qrSheet('${id}')"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M3 3h8v8H3zm2 2v4h4V5zM13 3h8v8h-8zm2 2v4h4V5zM3 13h8v8H3zm2 2v4h4v-4zM13 13h3v3h-3zm5 0h3v3h-3zm-5 5h3v3h-3zm5 0h3v3h-3z"/></svg> QR</button></span></div></div>`;
+}
+/* ---------- ¿Te pagaron? ---------- */
+const payId=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+let PAY={};
+function qrClosed(){
+  if(!QRS.open)return;QRS.open=false;
+  if(S.qrAsk!==false&&qrFind())setTimeout(()=>payAsk(),200);
+}
+function payGuess(){
+  const m=PAY.monto;if(!(m>0))return'i';
+  const d=(S.deudas||[]).find(x=>x.tipo==='me'&&!x.cerrada&&Math.round(debtSaldo(x))===m);if(d)return'd:'+d.id;
+  const c=(S.cuentas||[]).find(x=>x.estado!=='pagada'&&Math.round(ccTotals(x).total)===m);if(c)return'c:'+c.id;
+  return'i';
+}
+function payAsk(opts){
+  opts=opts||{};
+  const pe=opts.pend&&(S.cobrosPend||[]).find(x=>x.id===opts.pend);
+  const l=(pe&&(S.llaves||[]).find(x=>x.id===pe.lid))||qrFind();
+  PAY={lid:l?l.id:'',monto:pe?pe.monto:(QRS.monto||0),concepto:pe?pe.concepto:(QRS.concepto||''),quien:pe?(pe.quien||''):'',dest:'',cat:'',pend:pe?pe.id:''};
+  PAY.dest=payGuess();payRender();
+}
+function payRender(){
+  const l=(S.llaves||[]).find(x=>x.id===PAY.lid);
+  const debts=(S.deudas||[]).filter(x=>x.tipo==='me'&&!x.cerrada).sort((a,b)=>debtSaldo(b)-debtSaldo(a)).slice(0,8);
+  const cuentas=(S.cuentas||[]).filter(x=>x.estado!=='pagada').slice(-8).reverse();
+  const opt=(v,ic,t,sub)=>`<button class="pyopt ${PAY.dest===v?'on':''}" onclick="PAY.dest='${v}';payRender()"><i>${ic}</i><span><b>${esc(t)}</b><small>${esc(sub)}</small></span><em></em></button>`;
+  const cat=PAY.cat||(INGS.find(x=>/Otros/i.test(x))||INGS[0]);
+  openSheet(`<div style="text-align:center;font-size:42px;margin-top:2px">💸</div>
+  <h2 style="margin:2px 0 0;font-size:24px;text-align:center">¿Te pagaron?</h2>
+  <div class="sub" style="text-align:center;margin:4px 0 6px">${l?'Cobro por '+esc(llName(l)):'Cobro'}${PAY.concepto.trim()?' · '+esc(PAY.concepto.trim()):''}</div>
+  <label>Monto recibido</label><input id="py-m" inputmode="numeric" placeholder="$ 0" value="${PAY.monto?Math.round(PAY.monto).toLocaleString('es-CO'):''}" oninput="fmtN(this);PAY.monto=num(this.value)" autocomplete="off">
+  <label>¿Quién te pagó? (opcional)</label><input id="py-q" placeholder="Nombre" value="${esc(PAY.quien)}" oninput="PAY.quien=this.value" autocomplete="off">
+  <label>Guardar el pago en…</label>
+  <div class="pyopts">${opt('i','💰','Ingreso nuevo','Se suma a tus ingresos del mes')}
+    ${debts.map(d=>opt('d:'+d.id,'↩️','Abono de '+d.persona,'Le quedaría saldo de '+cop(Math.max(0,debtSaldo(d)-(PAY.monto||0)))+' · debe '+cop(debtSaldo(d)))).join('')}
+    ${cuentas.map(c=>opt('c:'+c.id,'🧾','Cuenta de cobro #'+String(c.num).padStart(4,'0'),c.cliente+' · '+cop(ccTotals(c).total))).join('')}</div>
+  ${PAY.dest==='i'?`<label>Categoría del ingreso</label><select onchange="PAY.cat=this.value">${INGS.map(x=>`<option ${x===cat?'selected':''}>${esc(x)}</option>`).join('')}</select>`:''}
+  <button class="btn" onclick="payYes()">✅ Sí, me pagaron</button>
+  <button class="btn sec" onclick="payNo()">⏳ Todavía no</button>
+  <button class="btn sec" onclick="closeSheet()">Cerrar sin registrar</button>`);
+}
+function payYes(){
+  const m=Math.round(+PAY.monto||0);if(m<1)return toast('Escribe el monto recibido','r');
+  const l=(S.llaves||[]).find(x=>x.id===PAY.lid),f=today(),who=String(PAY.quien||'').trim(),name=l?llName(l):'';
+  const metodo=l&&(l.tipo==='Nequi'||l.tipo==='Daviplata')?'📲 Nequi/Daviplata':'🏦 Transferencia/PSE';
+  const nota=(`Pago recibido${name?' por '+name:''}${who?' de '+who:''}${PAY.concepto.trim()?': '+PAY.concepto.trim():''}`).replace(/,/g,';');
+  const ing=(monto,cat,nt)=>S.movs.push({id:payId()+'i',fecha:f,hora:new Date().toTimeString().slice(0,5),tipo:'Ingreso',cat,monto,metodo,cuotas:0,valorCuota:monto,mes:fm(f),finMes:fm(f),nota:nt.replace(/,/g,';'),lugar:'',ticket:'',para:''});
+  const defCat=PAY.cat||(INGS.find(x=>/Otros/i.test(x))||INGS[0]);
+  let where='',extra='';
+  if(PAY.dest.startsWith('d:')){
+    const d=S.deudas.find(x=>x.id===PAY.dest.slice(2));if(!d)return toast('Esa deuda ya no existe','r');
+    const s=Math.max(0,Math.round(debtSaldo(d))),ab=Math.min(m,s);
+    if(ab>0)d.abonos.push({id:payId(),fecha:f,monto:ab,nota:nota.replace('Pago recibido','Abono')});
+    if(debtSaldo(d)<=0)d.cerrada=true;
+    where='la deuda de '+d.persona;
+    if(m>ab){ing(m-ab,defCat,`Excedente del pago de ${d.persona}`);extra=` (sobraron ${cop(m-ab)}: quedaron como ingreso)`}
+  }else if(PAY.dest.startsWith('c:')){
+    const c=S.cuentas.find(x=>x.id===PAY.dest.slice(2));if(!c)return toast('Esa cuenta ya no existe','r');
+    c.estado='pagada';
+    const d=c.deudaId&&S.deudas.find(x=>x.id===c.deudaId);
+    if(d&&!d.cerrada){const s=debtSaldo(d);if(s>0)d.abonos.push({id:payId(),fecha:f,monto:s,nota:'Pagada'});d.cerrada=true}
+    ing(m,INGS.find(x=>/Freelance/i.test(x))||defCat,`Cuenta de cobro #${c.num} ${c.cliente}${who?' · '+who:''}`);
+    where='la cuenta de cobro #'+String(c.num).padStart(4,'0');
+  }else{ing(m,defCat,nota);where='tus ingresos ('+defCat.replace(/^\S+\s*/,'')+')'}
+  if(PAY.pend)S.cobrosPend=(S.cobrosPend||[]).filter(x=>x.id!==PAY.pend);
+  afterAction();persist();closeSheet();refreshAll();renderLlaves();confetti();toast(`✅ ${cop(m)} guardado en ${where}${extra}`);
+}
+function payNo(){
+  const m=Math.round(+PAY.monto||0);
+  if(m>0&&!PAY.pend){
+    S.cobrosPend=S.cobrosPend||[];
+    if(!S.cobrosPend.some(x=>x.lid===PAY.lid&&x.monto===m&&x.concepto===PAY.concepto&&x.fecha===today()))
+      S.cobrosPend.push({id:payId(),lid:PAY.lid,monto:m,concepto:PAY.concepto,quien:String(PAY.quien||'').trim(),fecha:today(),t:Date.now()});
+    persist();closeSheet();renderLlaves();toast(`⏳ Quedó pendiente: ${cop(m)}. Te aviso para confirmarlo`);return;
+  }
+  closeSheet();
+}
+function pendSheet(){
+  const ps=S.cobrosPend||[];
+  openSheet(`<h2 style="margin:4px 0 0;font-size:22px">⏳ Cobros por confirmar</h2><div class="sub" style="margin:4px 0 10px">Cobros que mostraste con QR y aún no marcas como pagados.</div>
+  ${ps.map(p=>{const l=(S.llaves||[]).find(x=>x.id===p.lid),d=Math.max(0,Math.round((Date.now()-p.t)/864e5));
+    return`<div class="mov"><div class="ico" style="background:var(--ys);color:var(--y)">⏳</div><div><b>${cop(p.monto)}${p.quien?' · '+esc(p.quien):''}</b><small>${esc(l?llName(l):'Llave')}${p.concepto?' · '+esc(p.concepto):''} · ${d===0?'hoy':'hace '+d+' d'}</small></div>
+      <span style="display:flex;gap:6px"><button class="pedit" aria-label="Ya pagó" onclick="payAsk({pend:'${p.id}'})">✅</button><button class="pedit" aria-label="Descartar" onclick="pendDel('${p.id}')">🗑️</button></span></div>`}).join('')||'<div class="sub">No tienes cobros pendientes 🎉</div>'}
+  <button class="btn sec" onclick="closeSheet()">Cerrar</button>`);
+}
+function pendDel(id){S.cobrosPend=(S.cobrosPend||[]).filter(x=>x.id!==id);persist();renderLlaves();(S.cobrosPend.length?pendSheet():closeSheet())}
 /* ---------- utilidades nuevas ---------- */
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const daysTo=d=>Math.round((new Date(d+'T00:00:00')-new Date(new Date().setHours(0,0,0,0)))/864e5);
@@ -3094,6 +3436,7 @@ function getAlerts(){
     const n=daysTo(d.venc);if(n>ad)return;
     out.push({tab:'debts',lvl:n<=0?'r':'y',icon:'🤝',text:d.tipo==='yo'?`Debes <b>${cop(debtSaldo(d))}</b> a ${esc(d.persona)} · vence ${when(n)}`:`<b>${esc(d.persona)}</b> te debe ${cop(debtSaldo(d))} · vence ${when(n)}`});
   });
+  if((S.cobrosPend||[]).length){const n=S.cobrosPend.length,t=S.cobrosPend.reduce((a,p)=>a+p.monto,0);out.push({tab:'debts',lvl:'y',icon:'⏳',act:"go('debts');setTimeout(pendSheet,150)",text:`<b>${n} cobro${n>1?'s':''} por confirmar</b>: ${cop(t)}. ¿Ya te pagaron?`})}
   billRises().forEach(b=>out.push({tab:'home',lvl:'y',icon:'🔺',act:"go('home');homeTab('ana');setTimeout(()=>$('a-bills-card').scrollIntoView({behavior:'smooth'}),150)",text:`<b>${esc(b.name)}</b> subió ${Math.round(b.chg*100)}%: ${cop(b.prev)} → ${cop(b.last)}`}));
   if(S.backupDays>0&&S.movs.length>=5){const age=backupAge();if(age>=S.backupDays)out.push({tab:'set',lvl:age>=S.backupDays*2?'r':'y',icon:'💾',act:"go('set');setTimeout(()=>{sgOpen('data');$('backupCard').scrollIntoView({behavior:'smooth'})},80)",text:S.lastBackup?`Tu última copia fue <b>hace ${age} días</b>. Haz una nueva.`:'<b>Aún no has hecho una copia</b> de tus datos. Hazla ahora.'})}
   return out;
@@ -3116,6 +3459,8 @@ function renderPrefs(){
   <div class="hint">Los avisos aparecen en Inicio, con un punto rojo en la barra, y al abrir la app.</div>
   <label>Alertas de facturas</label>
   <select onchange="S.alzaPct=+this.value;persist();render()">${[3,5,10,15].map(n=>`<option value="${n}" ${(S.alzaPct||5)===n?'selected':''}>Avisar si una factura sube más de ${n}%</option>`).join('')}</select>
+  <label>Al cerrar un QR de cobro</label>
+  <select onchange="S.qrAsk=this.value==='1';persist()"><option value="1" ${S.qrAsk!==false?'selected':''}>Preguntarme si me pagaron</option><option value="0" ${S.qrAsk===false?'selected':''}>No preguntar</option></select>
   <label>Recordatorio de respaldo</label>
   <select onchange="S.backupDays=+this.value;persist();render()">${[[0,'No recordarme'],[7,'Cada 7 días'],[15,'Cada 15 días'],[30,'Cada 30 días'],[60,'Cada 60 días']].map(([v,l])=>`<option value="${v}" ${S.backupDays===v?'selected':''}>${l}</option>`).join('')}</select>
   <div class="hint">Te aviso en Inicio, con un punto rojo en ⚙️, cuando pase ese tiempo sin que hagas una copia.</div>
