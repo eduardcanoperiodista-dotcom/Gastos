@@ -818,7 +818,7 @@ html[data-hc="1"] .hfx{display:none}
   <div class="dsp"></div>
   <button class="dme" onclick="go('set')" aria-label="Mi perfil y ajustes"><span id="dav"></span><span class="dm"><b id="dname"></b><small id="dcloud"></small></span></button>
   <div class="dtools"><button onclick="uiTheme()" aria-label="Cambiar tema">🌙 Tema</button><button onclick="uiFont()" aria-label="Cambiar tamaño de letra">Aa Tamaño</button><button onclick="uiContrast()" aria-label="Alto contraste">◐ Contraste</button></div>
-  <button class="lobtn dlo hide" id="dlo" onclick="logoutSheet()">🚪 Cerrar sesión</button>
+  <button class="lobtn dlo" id="dlo" onclick="appClose()">🚪 Cerrar sesión</button>
   <button class="dhelp" onclick="helpSheet()">⌨️ Atajos de teclado <kbd>?</kbd></button>
 </aside>
 <main id="main-content">
@@ -3055,7 +3055,7 @@ function renderCloud(){
   const T={ok:'✓ Sincronizado '+cAgo(CL.last),sync:'Sincronizando…',pend:'Cambios por subir…',offline:'Sin conexión: se subirá cuando vuelva',err:'Error: '+CERR,auth:'Tu sesión venció: vuelve a iniciar sesión'}[CST]||'';
   b.innerHTML=`<div class="row"><div><b>${esc(CL.email||'')}</b><div class="sub" id="cl-st">${esc(T)}</div></div><span class="cdot ${CST}" style="position:static;display:inline-block"></span></div>
     <div class="two2" style="margin-top:12px"><button class="btn" style="margin:0" onclick="cloudSync(true)">🔄 Sincronizar ya</button><button class="btn sec" style="margin:0" onclick="cloudSheet()">⚙️ Cuenta</button></div>
-    <button class="btn sec" style="margin-top:8px" onclick="logoutSheet()">🚪 Cerrar sesión</button>`;
+    <button class="btn sec" style="margin-top:8px" onclick="appClose()">🚪 Cerrar sesión</button>`;
 }
 let CLF={};
 function cloudSheet(){
@@ -3064,7 +3064,7 @@ function cloudSheet(){
   openSheet(`<h2 style="margin:4px 0 0;font-size:22px">${on?'☁️ Tu cuenta en la nube':'☁️ Conectar la nube'}</h2>
   ${on?`<div class="sub" style="margin:6px 0 10px">Conectada como <b>${esc(CL.email)}</b>.</div>
   <button class="btn" onclick="cloudInvite()">📨 Invitar a alguien</button>
-  <button class="btn sec" onclick="logoutSheet()">🚪 Cerrar sesión</button>
+  <button class="btn sec" onclick="logoutSheet()">🔌 Desconectar la nube de este dispositivo</button>
   <button class="btn sec danger" onclick="cloudWipe()">🗑️ Borrar mis datos de la nube</button>
   <div class="hint">Cerrar sesión desconecta este dispositivo: nadie podrá entrar a tu nube desde aquí sin tu contraseña y tu frase secreta. Si es un equipo que no es tuyo, elige también borrar los datos locales.</div>
   <button class="btn sec" onclick="closeSheet()">Cerrar</button>`:`
@@ -3110,11 +3110,11 @@ function cloudOff(){
 }
 function logoutSheet(){
   openSheet(`<div style="text-align:center;font-size:42px;margin-top:4px">🚪</div>
-  <h2 style="margin:4px 0 0;font-size:22px;text-align:center">Cerrar sesión</h2>
+  <h2 style="margin:4px 0 0;font-size:22px;text-align:center">Desconectar la nube</h2>
   <div class="sub" style="text-align:center;margin:6px 0 12px">Primero subo tus últimos cambios a la nube para no perder nada.</div>
-  <button class="btn" id="lo-keep" onclick="cloudLogout(false)">Cerrar sesión y conservar los datos aquí</button>
+  <button class="btn" id="lo-keep" onclick="cloudLogout(false)">Desconectar y conservar los datos aquí</button>
   <div class="hint" style="margin:-4px 0 10px">Para tu propio teléfono o computador.</div>
-  <button class="btn sec danger" id="lo-wipe" onclick="cloudLogout(true)">Cerrar sesión y borrar los datos de este dispositivo</button>
+  <button class="btn sec danger" id="lo-wipe" onclick="cloudLogout(true)">Desconectar y borrar los datos de este dispositivo</button>
   <div class="hint" style="margin:-4px 0 10px">Para un equipo prestado o compartido: borra todos los perfiles locales. Tus datos siguen seguros en la nube.</div>
   <div id="lo-err" style="color:var(--r);font-weight:700;font-size:14px;min-height:18px"></div>
   <button class="btn sec" onclick="closeSheet()">Cancelar</button>`);
@@ -3648,7 +3648,7 @@ function renderSetHero(){
     </div>
     <div class="shst"><div><b>${S.movs.length}</b><small>movimientos</small></div><div><b>${days}</b><small>${days===1?'día':'días'} con Gastos</small></div><div><b>${PR.list.length}</b><small>${PR.list.length===1?'perfil':'perfiles'}</small></div></div>
     <div class="shbtns"><button onclick="pfSheet()">✏️ Editar perfil</button><button onclick="profSheet()">👥 ${PR.list.length>1?PR.list.length+' perfiles':'Perfiles'}</button></div>
-    ${on?`<button class="lobtn" onclick="logoutSheet()">🚪 Cerrar sesión</button>`:''}
+    <button class="lobtn" onclick="appClose()">🚪 Cerrar sesión</button>
   </div>`;
   sgSubs();
 }
@@ -3779,7 +3779,6 @@ function dskRender(){
   const p=S.perfil||{},nm=(p.nombre||'').trim()||'Tu perfil',a=pAvOf(PR.list.find(x=>x.id===PID)||{id:PID});
   e.innerHTML=pAvHtml(a,nm,46);$('dname').textContent=nm;
   const on=cEnabled(),T={ok:'Nube sincronizada',sync:'Sincronizando…',pend:'Subiendo cambios…',offline:'Sin conexión',err:'Error de nube',auth:'Inicia sesión'};
-  const lo=$('dlo');if(lo)lo.classList.toggle('hide',!on);
   $('dcloud').innerHTML=`<i class="dsd ${on?CST:'off'}"></i>${esc(on?(T[CST]||'Nube'):'Sin nube')}`;
   const n=(S.cobrosPend||[]).length,b=$('dbadge');if(b){b.textContent=n;b.classList.toggle('hide',!n)}
 }
@@ -4251,9 +4250,44 @@ document.addEventListener('visibilitychange',()=>{
   else if(hiddenAt&&Date.now()-hiddenAt>=(d.delay??30)*1000&&$('lock').classList.contains('hide'))showPad('unlock','Gastos','Ingresa tu PIN');
 });
 
+/* ---------- cerrar sesión de la app (pantalla de ingreso) ---------- */
+const OUTK='gastos_out_v1';
+const isOut=()=>{try{return localStorage.getItem(OUTK)==='1'}catch(e){return false}};
+function appClose(){
+  try{localStorage.setItem(OUTK,'1')}catch(e){}
+  closeSheet();if(typeof fabClose==='function')fabClose();
+  gateShow();
+}
+function appOpen(){
+  try{localStorage.removeItem(OUTK)}catch(e){}
+  const g=$('gate');if(g)g.classList.add('hide');$('lock').classList.add('hide');
+  go('home');toast('👋 Bienvenido de nuevo');
+}
+function gateShow(){
+  const d=lockData();
+  if(d){showPad('unlock','Sesión cerrada','Ingresa tu PIN para entrar',appOpen);return}
+  const nm=((S.perfil&&S.perfil.nombre)||'').trim(),a=pAvOf(PR.list.find(x=>x.id===PID)||{id:PID}),cl=cEnabled()&&CL.salt&&CL.ck;
+  let g=$('gate');if(!g){g=document.createElement('div');g.id='gate';g.className='lock';document.body.appendChild(g)}
+  g.classList.remove('hide');
+  g.innerHTML=`<div>${pAvHtml(a,nm,84)}</div><h2 style="margin:0">${nm?esc(nm):'Gastos'}</h2>
+  <p style="margin:0;opacity:.85">Sesión cerrada</p>
+  ${cl?`<div style="width:100%;max-width:340px"><input id="gt-p" type="password" placeholder="Tu frase secreta" autocomplete="off" style="text-align:center" onkeydown="if(event.key==='Enter')gateIn()"><div id="gt-e" style="color:#ffb4ab;font-weight:700;font-size:14px;min-height:20px;margin-top:6px"></div></div>
+  <button class="btn" style="max-width:340px;background:#fff;color:#0b5d3c" onclick="gateIn()">Entrar</button>
+  <div style="opacity:.7;font-size:13px;max-width:300px;text-align:center">Usa la misma frase secreta de tu nube (${esc(CL.email||'')}).</div>`
+  :`<button class="btn" style="max-width:340px;background:#fff;color:#0b5d3c" onclick="appOpen()">Entrar</button>
+  <div style="opacity:.7;font-size:13px;max-width:300px;text-align:center">Para que nadie más entre, activa un PIN en Ajustes › Seguridad o conecta tu nube.</div>`}`;
+  setTimeout(()=>{const i=$('gt-p');if(i&&!window.__NOANIM)i.focus()},100);
+}
+async function gateIn(){
+  const i=$('gt-p'),e=$('gt-e'),v=String(i&&i.value||'');if(!v)return;
+  if(e)e.textContent='Verificando…';
+  let ok=false;try{ok=(await cDerive(v,CL.salt))===CL.ck}catch(x){}
+  if(ok)appOpen();else{if(e)e.textContent='Frase secreta incorrecta';if(i){i.value='';i.focus&&i.focus()}}
+}
+
 applyTheme();decorate(document.body);go('home');render();checkBadges(false);slideSoon();cloudBoot();profBoot();
 if(!S.hintFab&&!(window.matchMedia&&matchMedia('(min-width:1100px)').matches)){S.hintFab=1;persist();setTimeout(()=>toast('💡 Mantén pulsado ＋ para acciones rápidas'),4300)}
-if(lockData())showPad('unlock','Gastos','Ingresa tu PIN');
+if(isOut())gateShow();else if(lockData())showPad('unlock','Gastos','Ingresa tu PIN');
 {const n=getAlerts().length;if(n)setTimeout(()=>toast(`🔔 Tienes ${n} alerta${n>1?'s':''} de pago`,'y'),1500)}
 </script>
 </body>
