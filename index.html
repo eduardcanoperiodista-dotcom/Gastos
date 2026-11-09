@@ -674,6 +674,15 @@ svg rect[data-tip].tsel{fill:rgba(120,140,130,.16)}
 .pfopts button.on{background:var(--gs);box-shadow:0 0 0 2px var(--g)}
 .pfemo{margin-top:10px}
 @media(prefers-reduced-motion:reduce){.shav:before{animation:none}}
+/* ---------- métodos de pago ---------- */
+.flowrow{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.flowrow:last-child{border-bottom:0}
+.flowrow .ico{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;background:var(--soft);font-size:19px;flex:none}
+.flowt{flex:1;min-width:0;display:flex;flex-direction:column}.flowt b{font-size:15px}.flowt small{font-size:12.5px;color:var(--mut)}
+.flowrow>b{font-size:15.5px;font-variant-numeric:tabular-nums}
+.pos{color:var(--g)}.neg{color:var(--r)}
+.leg .mov{padding:9px 0}
+.legb{display:flex;gap:6px}.legb button{border:0;border-radius:99px;padding:8px 11px;font-weight:800;font-size:12.5px;background:var(--gs);color:var(--g)}.legb button:last-child{background:var(--rs);color:var(--r)}
 </style>
 </head>
 <body>
@@ -737,6 +746,7 @@ svg rect[data-tip].tsel{fill:rgba(120,140,130,.16)}
       <div class="card"><h2><i>👥</i>¿Para quién gastas?</h2><div id="a-para"></div></div>
       <div class="card"><h2><i>💲</i>Historial de precios</h2><div id="a-price"></div></div>
       <div class="card" id="a-bills-card"><h2><i>🧾</i>Facturas recurrentes</h2><div id="a-bills"></div></div>
+      <div class="card" id="a-flow-card"><h2><i>📲</i>Entradas y salidas por método</h2><div id="a-flow"></div><div class="hint">Toca un método para ver sus movimientos. Cada billetera (Nequi, Daviplata…) va por separado.</div></div>
     </div>
     <div id="sec-cal" class="hide">
       <div class="card"><div id="cal-sum"></div><div class="cal" id="cal-head"></div><div class="cal" id="cal-grid"></div>
@@ -765,7 +775,7 @@ svg rect[data-tip].tsel{fill:rgba(120,140,130,.16)}
         <div><em>$</em><input id="monto" class="monto" inputmode="none" readonly placeholder="0" autocomplete="off" onclick="openKeypad()"></div></div>
       <label>Categoría</label>
       <div class="chips" id="catChips"></div>
-      <div id="metBox"><label>Método de pago</label><div class="chips" id="metChips"></div></div>
+      <div id="metBox"><label id="metLbl">Método de pago</label><div class="chips" id="metChips"></div></div>
       <div id="cardBox" class="hide"><label>Tarjeta usada</label><div class="chips" id="cardChips"></div></div>
       <div id="cuoBox" class="hide">
         <label>Cuotas (0 a 36)</label>
@@ -912,7 +922,9 @@ svg rect[data-tip].tsel{fill:rgba(120,140,130,.16)}
 <script>
 const CATS0=["🍽️ Comida","🛒 Mercado","🚌 Transporte","🏠 Vivienda","💡 Servicios","💊 Salud","🎓 Educación","🎉 Ocio","👕 Ropa","📱 Suscripciones","🐶 Mascotas","💳 Deudas","📦 Otros"];
 const INGS0=["💼 Salario","🧑‍💻 Freelance","🏷️ Ventas","🎁 Otros ingresos"];
-const METS=["💵 Efectivo","💳 Débito","💳 Tarjeta crédito","📲 Nequi/Daviplata","🏦 Transferencia/PSE"];
+const METS=["💵 Efectivo","💳 Débito","💳 Tarjeta crédito","📲 Nequi","📲 Daviplata","🏦 Transferencia/PSE"];
+const INCMETS=["💵 Efectivo","📲 Nequi","📲 Daviplata","🏦 Transferencia/PSE"];
+const LEGM="📲 Nequi/Daviplata";
 const CARDS0=["Davibank","Bogotá Latam","Bogotá Mercado","CMR Falabella"];
 const CCOL=["#e11d48","#2563eb","#f59e0b","#16a34a"];
 const defCards=()=>CARDS0.map((n,i)=>({name:n,nick:'',color:CCOL[i],cupo:0,saldo:0,corte:0,pago:0,tasa:0,manejo:0}));
@@ -1024,14 +1036,14 @@ function toast(msg,cls){
 
 const outOf=(m,x)=>x.tipo==='Gasto'&&x.mes<=m&&m<=x.finMes?x.valorCuota:0;
 function stats(m){
-  let ing=0,gas=0,cuo=0;const porCat={},porMet={};
+  let ing=0,gas=0,cuo=0;const porCat={},porMet={},flow={};const fb=x=>{const k=String(x.metodo).split(' - ')[0];return flow[k]||(flow[k]={ing:0,gas:0})};
   S.movs.forEach(x=>{
-    if(x.tipo==='Ingreso'&&x.mes===m)ing+=x.monto;
+    if(x.tipo==='Ingreso'&&x.mes===m){ing+=x.monto;fb(x).ing+=x.monto}
     const o=outOf(m,x);
-    if(o){gas+=o;porCat[x.cat]=(porCat[x.cat]||0)+o;porMet[x.metodo]=(porMet[x.metodo]||0)+o}
+    if(o){gas+=o;porCat[x.cat]=(porCat[x.cat]||0)+o;porMet[x.metodo]=(porMet[x.metodo]||0)+o;fb(x).gas+=o}
     if(x.tipo==='Gasto'&&x.mes<=m&&m<=x.finMes){const rest=(yOf(x.finMes)-yOf(m))*12+mOf(x.finMes)-mOf(m)+1;cuo+=rest*x.valorCuota}
   });
-  return{ing,gas,cuo,bal:ing-gas,porCat,porMet}
+  return{ing,gas,cuo,bal:ing-gas,porCat,porMet,flow}
 }
 
 function render(){
@@ -1072,7 +1084,7 @@ function render(){
 }
 /* ---------- filtros y lista ---------- */
 const cardNames=()=>S.cards.map(c=>c.name);
-const allMets=()=>["💵 Efectivo","💳 Débito",...cardNames().map(c=>"💳 Tarjeta crédito - "+c),"📲 Nequi/Daviplata","🏦 Transferencia/PSE"];
+const allMets=()=>["💵 Efectivo","💳 Débito",...cardNames().map(c=>"💳 Tarjeta crédito - "+c),"📲 Nequi","📲 Daviplata",...(S.movs.some(x=>x.metodo===LEGM)?[LEGM]:[]),"🏦 Transferencia/PSE"];
 function initFilters(){
   const keep=[$('f-cat').value,$('f-met').value];
   $('f-cat').innerHTML='<option value="">Todas las categorías</option>'+[...CATS,...INGS].map(c=>`<option>${c}</option>`).join('');
@@ -1149,7 +1161,7 @@ function initForm(x){
   if(!x&&S.autoLoc)getLoc();
   if(x){
     const [m0,card]=x.metodo.split(' - ');
-    F={tipo:x.tipo,cat:x.cat,metodo:x.tipo==='Gasto'?m0:METS[0],card:card||null,cuotas:x.cuotas||1,cuoTmp:String(x.cuotas||1),lugar:x.lugar||'',ticket:x.ticket||'',para:x.para||''};
+    F={tipo:x.tipo,cat:x.cat,metodo:x.tipo==='Gasto'?m0:x.metodo,card:card||null,cuotas:x.cuotas||1,cuoTmp:String(x.cuotas||1),lugar:x.lugar||'',ticket:x.ticket||'',para:x.para||''};
     $('monto').value=x.monto.toLocaleString('es-CO');$('nota').value=x.nota||'';$('fecha').value=x.fecha;
     if(F.lugar){$('btnLoc').textContent='✅ Ubicación';$('locHint').textContent='📍 '+F.lugar}
     if(F.ticket&&F.ticket.startsWith('data:')){$('prev').src=F.ticket;$('prev').classList.remove('hide');$('btnFoto').textContent='✅ Foto'}
@@ -1161,8 +1173,10 @@ function setTipo(t,keep){
   F.tipo=t;if(!keep)F.cat=null;
   document.querySelectorAll('#tipoSeg button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));slideSoon();
   chips('catChips',t==='Gasto'?CATS:INGS,'cat');
-  $('metBox').classList.toggle('hide',t==='Ingreso');
-  chips('metChips',METS,'metodo',credit);
+  {const list=t==='Gasto'?METS:INCMETS;
+   if(!keep)F.metodo=t==='Gasto'?METS[0]:INCMETS[INCMETS.length-1];
+   $('metBox').classList.remove('hide');$('metLbl').textContent=t==='Gasto'?'Método de pago':'¿Cómo te pagaron?';
+   chips('metChips',list,'metodo',credit)}
   $('paraBox').classList.toggle('hide',t==='Ingreso');paraChips();
   credit();
 }
@@ -1209,7 +1223,7 @@ function guardar(){
   const cuotas=cred?F.cuotas:0;
   const fecha=$('fecha').value,d=new Date();
   const mes=fm(fecha);
-  const x={id:(Date.now().toString(36)+Math.random().toString(36).slice(2,5)),fecha,hora:d.toTimeString().slice(0,5),tipo:F.tipo,cat:F.cat,monto,metodo:gasto?(cred?F.metodo+' - '+F.card:F.metodo):'🏦 Transferencia/PSE',cuotas,
+  const x={id:(Date.now().toString(36)+Math.random().toString(36).slice(2,5)),fecha,hora:d.toTimeString().slice(0,5),tipo:F.tipo,cat:F.cat,monto,metodo:gasto?(cred?F.metodo+' - '+F.card:F.metodo):(F.metodo&&!/crédito|Débito/.test(F.metodo)?F.metodo:'🏦 Transferencia/PSE'),cuotas,
     valorCuota:cuotas>0?Math.round(monto/cuotas):monto,mes,finMes:addM(mes,Math.max(cuotas-1,0)),nota:$('nota').value.replace(/,/g,';'),lugar:F.lugar,ticket:F.ticket,para:gasto?(F.para||''):''};
   const wasEdit=!!editId;
   if(!wasEdit){const dd=S.movs.find(m=>dupKey(m)===dupKey(x));if(dd&&!confirm(`Ya registraste algo igual: ${txt(dd.cat)} por ${cop(dd.monto)} el ${dd.fecha}${dd.nota?' ('+dd.nota+')':''}. ¿Guardar de todos modos?`))return}
@@ -1478,7 +1492,8 @@ function interpret(raw){
     r.cat=byName||(nm&&find(nm))||find('Otros')||null;
     r.para=S.personas.find(p=>p.length>2&&norm(p)!=='yo'&&hasKw(t,norm(p)))||'';
     // método
-    if(/nequi|daviplata/.test(t))r.metodo='📲 Nequi/Daviplata';
+    if(/daviplata/.test(t)&&!/nequi/.test(t))r.metodo='📲 Daviplata';
+    else if(/nequi/.test(t))r.metodo='📲 Nequi';
     else if(/efectivo|cash/.test(t))r.metodo='💵 Efectivo';
     else if(/debito/.test(t))r.metodo='💳 Débito';
     else if(/transferencia|pse/.test(t))r.metodo='🏦 Transferencia/PSE';
@@ -1489,6 +1504,7 @@ function interpret(raw){
     }
     if(!r.metodo&&(/tarjeta|credito/.test(t)||(r.cuotas&&r.cuotas>0)))r.metodo='💳 Tarjeta crédito';
   }
+  if(r.tipo==='Ingreso'){if(/daviplata/.test(t)&&!/nequi/.test(t))r.metodo='📲 Daviplata';else if(/nequi/.test(t))r.metodo='📲 Nequi';else if(/efectivo|cash/.test(t))r.metodo='💵 Efectivo';else if(/transferencia|pse|consignacion/.test(t))r.metodo='🏦 Transferencia/PSE'}
   // fecha
   const d=new Date();if(/anteayer|antier/.test(t))d.setDate(d.getDate()-2);else if(/\bayer\b/.test(t))d.setDate(d.getDate()-1);
   r.fecha=new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10);
@@ -1504,6 +1520,7 @@ function parseQuick(){
   const keep=raw;initForm(null);
   F.tipo=r.tipo;if(r.cat)F.cat=r.cat;F.para=r.para||'';
   if(r.tipo==='Gasto'){F.metodo=r.metodo||METS[0];F.card=r.card||null;F.cuotas=r.cuotas!=null?r.cuotas:1;F.cuoTmp=String(F.cuotas)}
+  else F.metodo=INCMETS.includes(r.metodo)?r.metodo:INCMETS[INCMETS.length-1];
   setTipo(r.tipo,true);
   $('monto').value=r.monto.toLocaleString('es-CO');$('nota').value=r.nota;$('fecha').value=r.fecha;fechaChips();cuoUI();
   $('q-txt').value=keep;
@@ -1673,7 +1690,7 @@ function askFilters(t){
   for(const {c,w} of names){const uniq=w.filter(x=>names.filter(o=>o.c!==c&&o.w.includes(x)).length===0);
     if(t.includes(norm(c.name))||(c.nick&&t.includes(norm(c.nick)))||uniq.some(x=>t.includes(x))){card=c;break}}
   if(card){f.met=x=>x.metodo.endsWith(' - '+card.name);f.card=card;f.desc.push(cname(card))}
-  else if(/nequi|daviplata/.test(t)){f.met=x=>/Nequi/.test(x.metodo);f.desc.push('Nequi/Daviplata')}
+  else if(/nequi|daviplata/.test(t)){const nq=/nequi/.test(t),dv=/daviplata/.test(t);f.met=x=>(nq&&/Nequi/.test(x.metodo))||(dv&&/Daviplata/.test(x.metodo));f.desc.push(nq&&dv?'Nequi y Daviplata':nq?'Nequi':'Daviplata')}
   else if(/efectivo/.test(t)){f.met=x=>/Efectivo/.test(x.metodo);f.desc.push('efectivo')}
   else if(/debito/.test(t)){f.met=x=>/Débito/.test(x.metodo);f.desc.push('débito')}
   else if(/tarjeta|credito/.test(t)){f.met=x=>/crédito/.test(x.metodo);f.desc.push('tarjetas de crédito')}
@@ -1737,7 +1754,7 @@ function dupGroups(){
 }
 function renderDupBox(){
   const n=dupGroups().length;
-  $('dupBox').innerHTML=`<div class="sub">Busca movimientos repetidos: misma fecha, monto, categoría y método.</div><button class="btn sec" onclick="dupSheet()">🔎 Revisar duplicados${n?` (${n})`:''}</button>`;
+  $('dupBox').innerHTML=`<div class="sub">Busca movimientos repetidos: misma fecha, monto, categoría y método.</div><button class="btn sec" onclick="dupSheet()">🔎 Revisar duplicados${n?` (${n})`:''}</button>${legacyMovs().length?`<button class="btn sec" onclick="legSheet()">📲 Separar Nequi y Daviplata (${legacyMovs().length})</button>`:''}`;
 }
 function dupSheet(){
   DUPG=dupGroups();
@@ -3353,7 +3370,7 @@ function payRender(){
 function payYes(){
   const m=Math.round(+PAY.monto||0);if(m<1)return toast('Escribe el monto recibido','r');
   const l=(S.llaves||[]).find(x=>x.id===PAY.lid),f=today(),who=String(PAY.quien||'').trim(),name=l?llName(l):'';
-  const metodo=l&&(l.tipo==='Nequi'||l.tipo==='Daviplata')?'📲 Nequi/Daviplata':'🏦 Transferencia/PSE';
+  const metodo=l&&l.tipo==='Nequi'?'📲 Nequi':l&&l.tipo==='Daviplata'?'📲 Daviplata':'🏦 Transferencia/PSE';
   const nota=(`Pago recibido${name?' por '+name:''}${who?' de '+who:''}${PAY.concepto.trim()?': '+PAY.concepto.trim():''}`).replace(/,/g,';');
   const ing=(monto,cat,nt)=>S.movs.push({id:payId()+'i',fecha:f,hora:new Date().toTimeString().slice(0,5),tipo:'Ingreso',cat,monto,metodo,cuotas:0,valorCuota:monto,mes:fm(f),finMes:fm(f),nota:nt.replace(/,/g,';'),lugar:'',ticket:'',para:''});
   const defCat=PAY.cat||(INGS.find(x=>/Otros/i.test(x))||INGS[0]);
@@ -3521,6 +3538,34 @@ function profSave(){
   if(p.id===PID){const keep=S.perfil&&S.perfil.av&&S.perfil.av.t==='img'&&av.t!=='img'?null:null;S.perfil=Object.assign({},S.perfil,{nombre:name,av:av.t==='img'&&S.perfil&&S.perfil.av&&S.perfil.av.t==='img'?S.perfil.av:av});S.avatars=S.avatars||{};if(av.t==='emoji')S.avatars.Yo={t:'emoji',v:av.v};else if(av.t==='letter')delete S.avatars.Yo;persist()}
   prSave();renderSetHero();if(!$('v-home').classList.contains('hide'))$('title').textContent=homeTitle();toast('✅ Perfil guardado');profSheet();
 }
+/* ---------- Nequi y Daviplata por separado ---------- */
+const legacyMovs=()=>S.movs.filter(x=>x.metodo===LEGM);
+function legGuess(x){const t=String(x.nota||'').toLowerCase(),dv=/daviplata|davi plata/.test(t),nq=/nequi/.test(t);return dv&&!nq?'📲 Daviplata':nq&&!dv?'📲 Nequi':''}
+function legSheet(){
+  const ls=legacyMovs().sort((a,b)=>(b.fecha+b.hora).localeCompare(a.fecha+a.hora)),gu=ls.filter(legGuess).length;
+  openSheet(`<h2 style="margin:4px 0 0;font-size:22px">📲 Separar Nequi y Daviplata</h2>
+  <div class="sub" style="margin:6px 0 12px;line-height:1.45">Estos <b>${ls.length}</b> registros se guardaron antes como «Nequi/Daviplata». Elige a cuál pertenece cada uno para que queden independientes.</div>
+  <div class="two2"><button class="btn" style="margin:0" onclick="legAll('📲 Nequi')">Todos a Nequi</button><button class="btn" style="margin:0" onclick="legAll('📲 Daviplata')">Todos a Daviplata</button></div>
+  ${gu?`<button class="btn sec" onclick="legAuto()">✨ Asignar según la nota (${gu})</button>`:''}
+  <div class="leg">${ls.slice(0,60).map(x=>`<div class="mov"><div class="ico">${emo(x.cat)}</div><div><b>${esc(txt(x.cat))} · ${cop(x.monto)}</b><small>${esc(x.fecha)} · ${x.tipo}${x.nota?' · '+esc(x.nota):''}</small></div><span class="legb"><button onclick="legSet('${x.id}','📲 Nequi')">Nequi</button><button onclick="legSet('${x.id}','📲 Daviplata')">Davi</button></span></div>`).join('')||'<div class="sub">Nada por separar 🎉</div>'}</div>
+  ${ls.length>60?`<div class="hint">Mostrando 60 de ${ls.length}. Al terminar, vuelve a abrir esta ventana.</div>`:''}
+  <button class="btn sec" onclick="closeSheet()">Cerrar</button>`);
+}
+function legRefresh(){refreshAll();if(legacyMovs().length)legSheet();else{closeSheet();toast('✅ Nequi y Daviplata quedaron separados')}}
+function legSet(id,m){const x=S.movs.find(v=>v.id===id);if(!x||x.metodo!==LEGM)return;x.metodo=m;persist();legRefresh()}
+function legAll(m){
+  const n=legacyMovs().length;if(!n)return;
+  if(!confirm(`¿Pasar los ${n} registros a ${m.replace(/^\S+\s/,'')}?`))return;
+  legacyMovs().forEach(x=>{x.metodo=m});persist();legRefresh();
+}
+function legAuto(){let n=0;legacyMovs().forEach(x=>{const g=legGuess(x);if(g){x.metodo=g;n++}});persist();legRefresh();if(n)toast(`✅ ${n} asignados según la nota`)}
+function renderFlow(){
+  const el=$('a-flow');if(!el)return;
+  const fl=stats(M).flow,order=['📲 Nequi','📲 Daviplata','💵 Efectivo','🏦 Transferencia/PSE','💳 Débito','💳 Tarjeta crédito',LEGM];
+  const keys=Object.keys(fl).sort((a,b)=>(order.indexOf(a)<0?99:order.indexOf(a))-(order.indexOf(b)<0?99:order.indexOf(b)));
+  el.innerHTML=keys.map(k=>{const f=fl[k],net=f.ing-f.gas;return`<div class="flowrow" onclick="flowGo('${k}')"><div class="ico">${emo(k)}</div><div class="flowt"><b>${esc(k===LEGM?'Nequi/Daviplata (por separar)':txt(k))}</b><small><span class="pos">＋ ${cop(f.ing)}</span> · <span class="neg">－ ${cop(f.gas)}</span></small></div><b class="${net>=0?'pos':'neg'}">${net<0?'−':''}${cop(Math.abs(net))}</b></div>`}).join('')||'<div class="sub">Sin movimientos este mes.</div>';
+}
+function flowGo(m){go('list');initFilters();if([...$('f-met').options].some(o=>o.value===m)){$('f-met').value=m;renderList()}}
 /* ---------- utilidades nuevas ---------- */
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const daysTo=d=>Math.round((new Date(d+'T00:00:00')-new Date(new Date().setHours(0,0,0,0)))/864e5);
@@ -3546,6 +3591,7 @@ function getAlerts(){
     const n=daysTo(d.venc);if(n>ad)return;
     out.push({tab:'debts',lvl:n<=0?'r':'y',icon:'🤝',text:d.tipo==='yo'?`Debes <b>${cop(debtSaldo(d))}</b> a ${esc(d.persona)} · vence ${when(n)}`:`<b>${esc(d.persona)}</b> te debe ${cop(debtSaldo(d))} · vence ${when(n)}`});
   });
+  if(legacyMovs().length){const n=legacyMovs().length;out.push({tab:'home',lvl:'y',icon:'📲',act:"legSheet()",text:`<b>${n} registro${n>1?'s':''}</b> de «Nequi/Daviplata» por separar`})}
   if((S.cobrosPend||[]).length){const n=S.cobrosPend.length,t=S.cobrosPend.reduce((a,p)=>a+p.monto,0);out.push({tab:'debts',lvl:'y',icon:'⏳',act:"go('debts');setTimeout(pendSheet,150)",text:`<b>${n} cobro${n>1?'s':''} por confirmar</b>: ${cop(t)}. ¿Ya te pagaron?`})}
   billRises().forEach(b=>out.push({tab:'home',lvl:'y',icon:'🔺',act:"go('home');homeTab('ana');setTimeout(()=>$('a-bills-card').scrollIntoView({behavior:'smooth'}),150)",text:`<b>${esc(b.name)}</b> subió ${Math.round(b.chg*100)}%: ${cop(b.prev)} → ${cop(b.last)}`}));
   if(S.backupDays>0&&S.movs.length>=5){const age=backupAge();if(age>=S.backupDays)out.push({tab:'set',lvl:age>=S.backupDays*2?'r':'y',icon:'💾',act:"go('set');setTimeout(()=>{sgOpen('data');$('backupCard').scrollIntoView({behavior:'smooth'})},80)",text:S.lastBackup?`Tu última copia fue <b>hace ${age} días</b>. Haz una nueva.`:'<b>Aún no has hecho una copia</b> de tus datos. Hazla ahora.'})}
@@ -3837,7 +3883,7 @@ function renderAna(){
   const nz=vals.filter(v=>v>0);
   $('a-tsub').textContent=nz.length?`Promedio mensual: ${cop(nz.reduce((a,b)=>a+b,0)/nz.length)} · Máximo: ${cop(Math.max(...vals))}`:'Sin datos todavía.';
   const top=S.movs.filter(x=>x.tipo==='Gasto'&&x.mes===M).sort((a,b)=>b.monto-a.monto).slice(0,5);
-  renderHormiga(s);renderPara();renderPrecios();renderBills();
+  renderHormiga(s);renderPara();renderPrecios();renderBills();renderFlow();
   $('ask-ex').innerHTML=ASK_EX.map((q,i)=>`<button class="chip" style="font-size:13px;padding:8px 12px" onclick="askEx(${i})">${q}</button>`).join('');
   $('a-top').innerHTML=top.map((x,i)=>`<div class="top5" onclick="detail('${x.id}')"><div class="n">${i+1}</div><div><b>${x.cat}</b><div class="sub">${txt(x.metodo)}${x.nota?' · '+x.nota:''}</div></div><b>${cop(x.monto)}</b></div>`).join('')||'<div class="sub">Sin compras este mes.</div>';
 }
