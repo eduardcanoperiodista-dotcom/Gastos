@@ -514,6 +514,67 @@ svg rect[data-tip].tsel{fill:rgba(120,140,130,.16)}
 .cdot{position:absolute;left:-2px;bottom:-2px;width:11px;height:11px;border-radius:50%;border:2px solid var(--bg);background:#8aa093}
 .cdot.ok{background:#2fbf7f}.cdot.sync,.cdot.pend{background:#f2c24f;animation:cpulse 1.1s ease-in-out infinite}.cdot.err,.cdot.auth{background:#ff5a4d}.cdot.offline{background:#8aa093}
 @keyframes cpulse{50%{transform:scale(1.35);opacity:.6}}
+/* ---------- ajustes premium + cartera de llaves ---------- */
+.shero{position:relative;overflow:hidden;border-radius:28px;padding:18px;margin:10px 0 4px;color:#fff;background:var(--gil) right -60px top -70px/280px 280px no-repeat,var(--noise) 0 0/160px 160px,radial-gradient(120% 140% at 100% 0%,#2fd08c,transparent 58%),linear-gradient(135deg,var(--b1),var(--b2));box-shadow:inset 0 1px 0 rgba(255,255,255,.32),inset 0 0 0 1px rgba(255,255,255,.07),0 20px 44px rgba(6,61,43,.38)}
+.shr1{display:flex;align-items:center;gap:14px;position:relative}
+.shav{border-radius:50%;padding:3px;background:linear-gradient(145deg,#f3dc9a,#b8892f);box-shadow:0 8px 20px rgba(0,0,0,.3);flex:none;line-height:0}
+.shav .avt{border:2px solid rgba(0,0,0,.25)}
+.shn{flex:1;min-width:0;display:flex;flex-direction:column}
+.shn b{font-size:22px;letter-spacing:-.025em;line-height:1.15;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.shn small{opacity:.8;font-size:13px;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sedit{width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font-size:16px;flex:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.schips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;position:relative}
+.schips span{font-size:12.5px;font-weight:700;padding:7px 11px;border-radius:99px;background:rgba(255,255,255,.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:inset 0 1px 0 rgba(255,255,255,.22)}
+.sgl{font-size:12px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--mut);margin:24px 8px 9px}
+.sgrp{display:flex;flex-direction:column;gap:10px}
+.sg{background:var(--card);border-radius:22px;box-shadow:var(--sh);overflow:hidden;transition:box-shadow .35s}
+.sg.open{box-shadow:0 14px 34px rgba(0,0,0,.14),0 0 0 1.5px var(--g)}
+.sgh{display:flex;align-items:center;gap:13px;width:100%;padding:12px 14px;border:0;background:none;text-align:left;color:var(--ink);font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;margin:0;border-radius:0}
+.sgh:active{background:var(--soft)}
+.sgi{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;font-size:20px;flex:none;background:var(--c);background:linear-gradient(145deg,var(--c),color-mix(in srgb,var(--c) 58%,#000));box-shadow:inset 0 1px 0 rgba(255,255,255,.38),0 7px 16px -5px var(--c)}
+.sgt{flex:1;min-width:0;display:flex;flex-direction:column}
+.sgt b{font-size:16px;letter-spacing:-.015em}
+.sgt small{color:var(--mut);font-size:12.5px;margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}
+.chev{width:9px;height:9px;border-right:2.5px solid var(--mut);border-bottom:2.5px solid var(--mut);transform:rotate(-45deg);transition:transform .45s var(--spring);margin:0 4px 0 2px;flex:none;opacity:.8}
+.sg.open .chev{transform:rotate(45deg)}
+.chev.go{transform:rotate(-45deg)}
+.sgb{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .5s var(--spring),visibility 0s .5s}
+.sg.open .sgb{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .5s var(--spring),visibility 0s}
+.sgin{overflow:hidden;min-height:0;padding:0 16px;transition:padding .4s}
+.sg.open .sgin{padding:2px 16px 18px}
+.sgin>div>label:first-child,.sgin label:first-child{margin-top:4px}
+.sdanger{margin-top:18px;padding-top:14px;border-top:1px dashed var(--line)}
+.sfoot{text-align:center;color:var(--mut);font-size:12px;margin:26px 0 8px;opacity:.8}
+.llw{margin:2px 0 6px}
+.llh{display:flex;justify-content:space-between;align-items:center;margin:8px 4px 8px}
+.llh b{font-size:17px;letter-spacing:-.02em}.llh small{display:block;color:var(--mut);font-size:12.5px;margin-top:1px}
+.llplus{width:38px;height:38px;border-radius:13px;border:0;background:var(--gs);color:var(--g);font-size:22px;font-weight:700;line-height:1}
+.llcar{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:6px 16px 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-padding:0 16px}
+.llcar::-webkit-scrollbar{display:none}
+.llc{position:relative;flex:0 0 min(290px,80%);height:172px;border-radius:24px;padding:15px 16px;color:#fff;scroll-snap-align:start;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;background:var(--gil) right -55px top -65px/250px 250px no-repeat,var(--noise) 0 0/160px 160px,radial-gradient(120% 140% at 100% 0%,rgba(255,255,255,.38),transparent 55%),linear-gradient(135deg,var(--c1),var(--c2));box-shadow:inset 0 1px 0 rgba(255,255,255,.42),inset 0 0 0 1px rgba(255,255,255,.1),0 18px 30px -10px var(--c1);transition:transform .4s var(--spring)}
+.llc:active{transform:scale(.97)}
+.llc:before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.16) 50%,transparent 65%);transform:translateX(-110%);animation:shn 8s ease-in-out 1s infinite;pointer-events:none}
+.llc-top{display:flex;align-items:center;gap:9px;position:relative}
+.llc-logo{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.96);color:var(--c1);display:grid;place-items:center;font-weight:900;font-size:17px;box-shadow:0 4px 10px rgba(0,0,0,.25);flex:none}
+.llc-brand{font-weight:800;font-size:15.5px;letter-spacing:-.015em;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.llc-star{font-size:11px;font-weight:800;background:rgba(255,255,255,.24);padding:5px 9px;border-radius:99px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);white-space:nowrap}
+.llc-num{font-size:24px;font-weight:700;letter-spacing:.07em;font-variant-numeric:tabular-nums;text-shadow:0 2px 12px rgba(0,0,0,.28);position:relative;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.llc-bot{display:flex;justify-content:space-between;align-items:flex-end;gap:8px;font-size:12.5px;position:relative}
+.llc-bot>span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600;letter-spacing:.03em;opacity:.95}
+.llc-act{display:flex;gap:7px;flex:none}
+.llc-act button{width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font-size:15px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.llc.add{background:none;border:2px dashed var(--line);box-shadow:none;color:var(--mut);align-items:center;justify-content:center;gap:4px;font-weight:700}
+.llc.add:before{display:none}.llc.add b{font-size:38px;color:var(--g);line-height:1}
+.llact{display:flex;gap:8px;flex-wrap:wrap;margin-top:-4px}
+.llact button{border:0;border-radius:99px;padding:11px 16px;background:var(--card);box-shadow:var(--sh);font-weight:700;font-size:13.5px;color:var(--ink)}
+.llempty{border-radius:24px;padding:18px;margin:8px 0 4px;color:#fff;background:var(--noise) 0 0/160px 160px,radial-gradient(110% 140% at 100% 0%,#7c3aed,transparent 60%),linear-gradient(135deg,#1e1b4b,#0f172a);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 16px 34px -10px rgba(76,29,149,.55)}
+.lle-t{font-weight:800;font-size:17px;letter-spacing:-.02em}.lle-s{opacity:.8;font-size:13.5px;margin:4px 0 12px;line-height:1.4}
+.lle-p{display:flex;flex-wrap:wrap;gap:8px}
+.lle-p button{border:0;border-radius:99px;padding:9px 14px;background:var(--c1);color:#fff;font-weight:800;font-size:13px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 14px -4px var(--c1)}
+[data-theme=black] .sg{background:linear-gradient(165deg,#0f1512,#060808 65%);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 0 0 0 1px rgba(255,255,255,.035),0 14px 32px rgba(0,0,0,.9)}
+[data-theme=black] .sg.open{box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 0 0 1.5px var(--gold),0 14px 36px rgba(0,0,0,.9)}
+[data-theme=black] .llact button{background:#0d1210}
+[data-theme=black] .shero{box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 0 0 1px rgba(217,178,106,.3),0 22px 50px -12px rgba(63,207,141,.4)}
 </style>
 </head>
 <body>
@@ -679,6 +740,7 @@ svg rect[data-tip].tsel{fill:rgba(120,140,130,.16)}
   <!-- DEUDAS CON PERSONAS -->
   <section id="v-debts" class="hide">
     <div id="db-hero"></div>
+    <div id="llWallet" class="llw"></div>
     <div class="tabs" style="grid-template-columns:repeat(3,1fr)"><button class="on" id="dtb-me" onclick="dtab('me')">Me deben</button><button id="dtb-yo" onclick="dtab('yo')">Yo debo</button><button id="dtb-cc" onclick="dtab('cc')">Cobros</button></div>
     <div class="two2" id="db-newbtn" style="margin-top:12px"><button class="btn" style="margin:0" onclick="debtSheet(-1)">＋ Nueva deuda</button><button class="btn sec" style="margin:0" onclick="cobroSheet(null)">💸 Cobro rápido</button></div>
     <div class="card" id="db-list"></div>
@@ -692,25 +754,34 @@ svg rect[data-tip].tsel{fill:rgba(120,140,130,.16)}
 
   <!-- AJUSTES -->
   <section id="v-set" class="hide">
-    <div class="card"><h2><i>🔔</i>Preferencias</h2><div id="prefBox"></div></div>
-    <div class="card"><h2><i>🔎</i>Calidad de datos</h2><div id="dupBox"></div></div>
-    <div class="card"><h2><i>🏷️</i>Mis categorías</h2><div id="catBox"></div></div>
-    <div class="card"><h2><i>👥</i>Personas</h2><div id="paBox"></div></div>
-    <div class="card"><h2><i>☁️</i>Nube y sincronización</h2><div id="cloudBox"></div></div>
-    <div class="card"><h2><i>🔑</i>Mis llaves de pago</h2><div id="llBox"></div></div>
-    <div class="card"><h2><i>🕘</i>Historial de cambios</h2><div id="histBox"></div></div>
-    <div class="card"><h2><i>🔒</i>Seguridad</h2><div id="secBox"></div></div>
-    <div class="card"><h2><i>🎯</i>Presupuesto mensual</h2><div id="budForm"></div>
-      <button class="btn" onclick="saveBud()">Guardar presupuestos</button></div>
-    <div class="card" id="backupCard"><h2><i>💾</i>Respaldo</h2><div id="backupInfo"></div>
+    <div id="setHero"></div>
+    <div class="sgl">Tu cuenta</div>
+    <div class="sgrp">
+      <div class="sg" data-sg="cloud"><button class="sgh" onclick="sgToggle('cloud')" aria-expanded="false"><span class="sgi" style="--c:#0ea5e9">☁️</span><span class="sgt"><b>Nube y sincronización</b><small id="sgs-cloud"></small></span><i class="chev"></i></button><div class="sgb"><div class="sgin"><div id="cloudBox"></div></div></div></div>
+      <div class="sg" data-sg="sec"><button class="sgh" onclick="sgToggle('sec')" aria-expanded="false"><span class="sgi" style="--c:#ef4444">🔒</span><span class="sgt"><b>Seguridad</b><small id="sgs-sec"></small></span><i class="chev"></i></button><div class="sgb"><div class="sgin"><div id="secBox"></div></div></div></div>
+      <div class="sg"><button class="sgh sglink" onclick="goLlaves()"><span class="sgi" style="--c:#c026d3">🔑</span><span class="sgt"><b>Llaves de pago</b><small id="sgs-keys"></small></span><i class="chev go"></i></button></div>
+    </div>
+    <div class="sgl">Personaliza</div>
+    <div class="sgrp">
+      <div class="sg" data-sg="pref"><button class="sgh" onclick="sgToggle('pref')" aria-expanded="false"><span class="sgi" style="--c:#8b5cf6">🎨</span><span class="sgt"><b>Apariencia y avisos</b><small id="sgs-pref"></small></span><i class="chev"></i></button><div class="sgb"><div class="sgin"><div id="prefBox"></div></div></div></div>
+      <div class="sg" data-sg="bud"><button class="sgh" onclick="sgToggle('bud')" aria-expanded="false"><span class="sgi" style="--c:#1fa166">🎯</span><span class="sgt"><b>Presupuesto mensual</b><small id="sgs-bud"></small></span><i class="chev"></i></button><div class="sgb"><div class="sgin"><div id="budForm"></div><button class="btn" onclick="saveBud()">Guardar presupuestos</button></div></div></div>
+      <div class="sg" data-sg="cat"><button class="sgh" onclick="sgToggle('cat')" aria-expanded="false"><span class="sgi" style="--c:#f59e0b">🏷️</span><span class="sgt"><b>Mis categorías</b><small id="sgs-cat"></small></span><i class="chev"></i></button><div class="sgb"><div class="sgin"><div id="catBox"></div></div></div></div>
+      <div class="sg" data-sg="per"><button class="sgh" onclick="sgToggle('per')" aria-expanded="false"><span class="sgi" style="--c:#3b82f6">👥</span><span class="sgt"><b>Personas</b><small id="sgs-per"></small></span><i class="chev"></i></button><div class="sgb"><div class="sgin"><div id="paBox"></div></div></div></div>
+    </div>
+    <div class="sgl">Tus datos</div>
+    <div class="sgrp">
+      <div class="sg" id="backupCard" data-sg="data"><button class="sgh" onclick="sgToggle('data')" aria-expanded="false"><span class="sgi" style="--c:#14b8a6">💾</span><span class="sgt"><b>Respaldo y datos</b><small id="sgs-data"></small></span><i class="chev"></i></button><div class="sgb"><div class="sgin"><div id="backupInfo"></div>
       <button class="btn sec" onclick="document.getElementById('impj').click()">📥 Restaurar copia completa</button>
       <input type="file" id="impj" accept=".json,application/json" class="hide">
       <button class="btn sec" onclick="exportCSV()">⬆️ Exportar CSV</button>
       <button class="btn sec" onclick="document.getElementById('imp').click()">⬇️ Importar CSV</button>
       <input type="file" id="imp" accept=".csv,text/csv,text/plain" class="hide">
       <div class="hint">El CSV tiene 14 columnas: las 13 de siempre más «Para». Para ver todo tu historial con fórmulas usa el Excel de Inicio › Reporte.</div>
-      <button class="btn sec danger" onclick="resetAll()">🗑️ Borrar todos los datos</button>
+      <div class="sdanger"><div class="sub">Zona delicada</div><button class="btn sec danger" onclick="resetAll()">🗑️ Borrar todos los datos</button></div></div></div></div>
+      <div class="sg" data-sg="dup"><button class="sgh" onclick="sgToggle('dup')" aria-expanded="false"><span class="sgi" style="--c:#f97316">🔎</span><span class="sgt"><b>Calidad de datos</b><small id="sgs-dup"></small></span><i class="chev"></i></button><div class="sgb"><div class="sgin"><div id="dupBox"></div></div></div></div>
+      <div class="sg" data-sg="hist"><button class="sgh" onclick="sgToggle('hist')" aria-expanded="false"><span class="sgi" style="--c:#6366f1">🕘</span><span class="sgt"><b>Historial de cambios</b><small id="sgs-hist"></small></span><i class="chev"></i></button><div class="sgb"><div class="sgin"><div id="histBox"></div></div></div></div>
     </div>
+    <div class="sfoot">Gastos · tus datos viven en este teléfono{'}}{{'}</div>
   </section>
 </main>
 <nav>
@@ -935,7 +1006,7 @@ function delMov(id){if(confirm('¿Eliminar este movimiento?')){S.movs=S.movs.fil
 let editId=null;
 function editMov(id){editId=id;go('add',true)}
 
-const TITLES={home:['Hola 👋','Así va tu mes'],list:['Movimientos','Todo lo que registraste'],add:['Nuevo registro','Gasto o ingreso'],cards:['Tarjetas','Cupos, cuotas y pagos'],debts:['Deudas','Lo que te deben y lo que debes'],set:['Ajustes','Presupuestos y respaldo']};
+const TITLES={home:['Hola 👋','Así va tu mes'],list:['Movimientos','Todo lo que registraste'],add:['Nuevo registro','Gasto o ingreso'],cards:['Tarjetas','Cupos, cuotas y pagos'],debts:['Deudas','Lo que te deben y lo que debes'],set:['Ajustes','Tu cuenta y preferencias']};
 let dupSrc=null;
 function go(v,keep){
   if(!keep){editId=null;dupSrc=null}
@@ -947,7 +1018,7 @@ function go(v,keep){
   if(v==='cards')renderCards();
   if(v==='debts')renderDebts();
   if(v==='add')initForm(editId?S.movs.find(m=>m.id===editId):dupSrc);
-  if(v==='set'){initBud();renderSec();renderCatMgr();renderPrefs();renderDupBox();renderPaBox();renderBackupInfo();renderLlaves();renderHistory();renderCloud()}
+  if(v==='set'){initBud();renderSec();renderCatMgr();renderPrefs();renderDupBox();renderPaBox();renderBackupInfo();renderLlaves();renderHistory();renderCloud();renderSetHero()}
   if(v==='list')initFilters();
   {const h=$('heroMain');if(h){h.style.transform='';h.style.opacity=''}}
   window.scrollTo(0,0);stagger($('v-'+v));slideSoon();
@@ -2276,7 +2347,7 @@ function updateUndoBar(){
 }
 function refreshAll(){
   render();
-  if(!$('v-set').classList.contains('hide')){initBud();renderSec();renderCatMgr();renderPrefs();renderDupBox();renderPaBox();renderBackupInfo();renderLlaves();renderHistory();renderCloud()}
+  if(!$('v-set').classList.contains('hide')){initBud();renderSec();renderCatMgr();renderPrefs();renderDupBox();renderPaBox();renderBackupInfo();renderLlaves();renderHistory();renderCloud();renderSetHero()}
   if(!$('v-debts').classList.contains('hide')){renderDebts();renderCC()}
   if(!$('v-add').classList.contains('hide'))paraChips();
 }
@@ -2311,11 +2382,6 @@ function llLine(l){
   if(l.titular)parts.push(l.titular);
   if(l.doc)parts.push('CC/NIT '+l.doc);
   return parts.join(' — ');
-}
-function renderLlaves(){
-  const ls=S.llaves||[];
-  $('llBox').innerHTML=(ls.map(l=>{const t=llTipo(l.tipo);return`<div class="mov" onclick="llSheet('${l.id}')"><div class="ico" style="background:${t.c};color:#fff;font-weight:800;font-size:15px">${esc(llName(l).charAt(0).toUpperCase())}</div><div><b>${esc(llName(l))}${l.principal?' ⭐':''}</b><small>${esc(fmtVal(l.tipo,l.valor))}${l.titular?' · '+esc(l.titular):''}</small></div><span class="sub">✏️</span></div>`}).join('')||'<div class="sub">Aún no tienes llaves. Añade tu Nequi, Daviplata, cuenta del Banco de Bogotá, Nu Bank o una llave Bre-B para cobrar con un toque.</div>')+
-    `<button class="btn" onclick="llSheet(-1)">＋ Añadir llave de pago</button><div class="hint">Puedes tener varias del mismo banco. Se guardan solo en este teléfono y se usan en los cobros y en las cuentas de cobro.</div>`;
 }
 let LLF={};
 function llSheet(id){
@@ -2696,7 +2762,7 @@ function cApply(m){
 }
 
 /* estado y botón de nube */
-function cSet(s,msg){CST=s;if(msg!==undefined)CERR=msg;const d=$('cdot');if(d)d.className='cdot '+(cEnabled()?s:'hide');if($('v-set')&&!$('v-set').classList.contains('hide'))renderCloud()}
+function cSet(s,msg){CST=s;if(msg!==undefined)CERR=msg;const d=$('cdot');if(d)d.className='cdot '+(cEnabled()?s:'hide');if($('v-set')&&!$('v-set').classList.contains('hide')){renderCloud();renderSetHero()}}
 function cAgo(t){if(!t)return'';const m=Math.round((Date.now()-t)/60000);return m<1?'justo ahora':m<60?`hace ${m} min`:m<1440?`hace ${Math.round(m/60)} h`:`hace ${Math.round(m/1440)} d`}
 function renderCloud(){
   const b=$('cloudBox');if(!b)return;
@@ -2806,6 +2872,73 @@ function cloudBoot(){
   setInterval(()=>{if(!document.hidden)cloudSync()},90000);
   if(cEnabled()){cSet('pend');setTimeout(()=>cloudSync(),1200)}
 }
+/* ---------- Ajustes premium + cartera de llaves ---------- */
+const THEME_N={auto:'Automática',light:'Clara',dark:'Oscura',black:'Negro OLED',autoblack:'Automática + OLED',sched:'Por horario'};
+function sgToggle(id){
+  const el=document.querySelector(`[data-sg="${id}"]`);if(!el)return;
+  const open=!el.classList.contains('open');
+  document.querySelectorAll('#v-set .sg.open').forEach(x=>{x.classList.remove('open');const b=x.querySelector('.sgh');if(b)b.setAttribute('aria-expanded','false')});
+  if(open){el.classList.add('open');el.querySelector('.sgh').setAttribute('aria-expanded','true');
+    setTimeout(()=>{try{el.scrollIntoView({behavior:'smooth',block:'nearest'})}catch(e){}},60)}
+}
+function sgOpen(id){const el=document.querySelector(`[data-sg="${id}"]`);if(el&&!el.classList.contains('open'))sgToggle(id)}
+function sgSubs(){
+  const set=(id,t)=>{const e=$('sgs-'+id);if(e)e.textContent=t};
+  const bud=Object.values(S.bud||{}).reduce((a,n)=>a+(+n||0),0);
+  set('pref',`${THEME_N[S.theme||'auto']||'Automática'} · mes desde el día ${S.startDay||1}`);
+  set('bud',bud?`${cop(bud)} al mes`:'Define cuánto gastar por categoría');
+  set('cat',`${S.cats.length} de gasto · ${S.ings.length} de ingreso`);
+  set('per',(S.personas||[]).slice(0,4).join(', ')+((S.personas||[]).length>4?'…':''));
+  set('cloud',cEnabled()?({ok:'✓ Sincronizado',sync:'Sincronizando…',pend:'Subiendo cambios…',offline:'Sin conexión',err:'Con un error',auth:'Sesión vencida'}[CST]||''):'Respalda y sincroniza tus datos');
+  let lk=false;try{lk=!!lockData()}catch(e){}
+  set('sec',lk?'Candado activado':'Protege el acceso a la app');
+  const ag=backupAge();set('data',S.lastBackup?`Último respaldo ${ag===0?'hoy':'hace '+ag+' d'}`:'Aún sin respaldo: haz una copia');
+  set('dup','Busca movimientos repetidos');
+  set('hist',UNDO.length?`${UNDO.length} cambio${UNDO.length>1?'s':''} que puedes deshacer`:'Deshacer y rehacer cambios');
+  set('keys',(S.llaves||[]).length?`${S.llaves.length} guardada${S.llaves.length>1?'s':''} · en Deudas`:'Nequi, Daviplata, bancos… en Deudas');
+}
+function renderSetHero(){
+  const h=$('setHero');if(!h)return;
+  const p=S.perfil||{},nm=(p.nombre||'').trim()||'Tu perfil';
+  const since=S.firstUse?new Date(S.firstUse+'T00:00:00').toLocaleDateString('es-CO',{month:'short',year:'numeric'}):'';
+  const cl=cEnabled()?({ok:'☁️ Sincronizado',sync:'☁️ Sincronizando…',pend:'☁️ Subiendo…',offline:'☁️ Sin conexión',err:'☁️ Error',auth:'☁️ Inicia sesión'}[CST]||'☁️'):'☁️ Sin nube';
+  h.innerHTML=`<div class="shero"><div class="shr1"><div class="shav" onclick="perfilSheet()">${avatar('Yo',64)}</div>
+    <div class="shn"><b>${esc(nm)}</b><small>${esc(cEnabled()?CL.email:(p.email||'Completa tus datos de cobro'))}</small></div>
+    <button class="sedit" onclick="perfilSheet()" aria-label="Editar perfil">✏️</button></div>
+    <div class="schips"><span>🧾 ${S.movs.length} movimientos</span><span>${since?'📅 desde '+esc(since):'📅 recién empiezas'}</span><span onclick="sgOpen('cloud');document.querySelector('[data-sg=cloud]').scrollIntoView({behavior:'smooth',block:'center'})">${cl}</span></div></div>`;
+  sgSubs();
+}
+function goLlaves(){go('debts');setTimeout(()=>{const w=$('llWallet');if(w)w.scrollIntoView({behavior:'smooth',block:'start'})},120)}
+
+/* cartera de llaves de pago */
+function llShade(hex,k){const n=parseInt(hex.slice(1),16),f=v=>Math.max(0,Math.min(255,Math.round(v*(1+k))));return'#'+[(n>>16)&255,(n>>8)&255,n&255].map(f).map(v=>v.toString(16).padStart(2,'0')).join('')}
+function llMask(s){s=String(s);return s.replace(/\d/g,(d,i)=>i<s.length-3?'•':d)}
+function llCopyText(t,msg){
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(()=>toast(msg),()=>toast('No pude copiar','y'));return}
+  try{const a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();toast(msg)}catch(e){toast('Tu navegador no permite copiar','y')}
+}
+function llCopy(id){const l=(S.llaves||[]).find(x=>x.id===id);if(!l)return;llCopyText(String(l.valor).trim(),'📋 '+llName(l)+' copiada')}
+function llShare(id){const l=(S.llaves||[]).find(x=>x.id===id);if(!l)return;const t=llLine(l);if(navigator.share)navigator.share({text:t}).catch(()=>{});else llCopyText(t,'📋 Datos copiados')}
+function llShareAll(){const ls=S.llaves||[];if(!ls.length)return;const t='Puedes pagarme por:\n'+ls.map(l=>'• '+llLine(l)).join('\n');if(navigator.share)navigator.share({text:t}).catch(()=>{});else llCopyText(t,'📋 Todas mis llaves copiadas')}
+function llNew(k){llSheet(-1);LLF.tipo=k;llRender(false)}
+function llCard(l){
+  const t=llTipo(l.tipo),v=fmtVal(l.tipo,l.valor),id=esc(l.id);
+  return`<div class="llc" style="--c1:${t.c};--c2:${llShade(t.c,-.5)}" onclick="llCopy('${id}')">
+    <div class="llc-top"><span class="llc-logo">${esc(t.k.charAt(0))}</span><span class="llc-brand">${esc(llName(l))}</span>${l.principal?'<span class="llc-star">⭐ Principal</span>':''}</div>
+    <div class="llc-num">${esc(HIDE?llMask(v):v)}</div>
+    <div class="llc-bot"><span>${esc(l.titular||t.k)}${t.bank&&l.cuentaTipo?' · '+esc(l.cuentaTipo):''}</span><span class="llc-act"><button aria-label="Compartir" onclick="event.stopPropagation();llShare('${id}')">📤</button><button aria-label="Editar" onclick="event.stopPropagation();llSheet('${id}')">✏️</button></span></div></div>`;
+}
+function renderLlaves(){
+  const w=$('llWallet'),ls=S.llaves||[];
+  if(w){
+    w.innerHTML=ls.length?`<div class="llh"><div><b>🔑 Mis llaves de pago</b><small>Toca una tarjeta para copiar el dato</small></div><button class="llplus" onclick="llSheet(-1)" aria-label="Añadir llave">＋</button></div>
+      <div class="llcar">${ls.map(llCard).join('')}<div class="llc add" onclick="llSheet(-1)"><b>＋</b><span>Añadir llave</span></div></div>
+      <div class="llact"><button onclick="cobroSheet(null)">💸 Cobrar</button><button onclick="llShareAll()">📤 Compartir todas</button></div>`
+    :`<div class="llempty"><div class="lle-t">🔑 Tus llaves de pago, a un toque</div><div class="lle-s">Guárdalas una vez y cópialas o compártelas cuando alguien te vaya a pagar.</div>
+      <div class="lle-p">${LL_TIPOS.slice(0,5).map(t=>`<button style="--c1:${t.c}" onclick="llNew('${t.k}')">${esc(t.k)}</button>`).join('')}</div></div>`;
+  }
+  sgSubs();
+}
 /* ---------- utilidades nuevas ---------- */
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const daysTo=d=>Math.round((new Date(d+'T00:00:00')-new Date(new Date().setHours(0,0,0,0)))/864e5);
@@ -2832,7 +2965,7 @@ function getAlerts(){
     out.push({tab:'debts',lvl:n<=0?'r':'y',icon:'🤝',text:d.tipo==='yo'?`Debes <b>${cop(debtSaldo(d))}</b> a ${esc(d.persona)} · vence ${when(n)}`:`<b>${esc(d.persona)}</b> te debe ${cop(debtSaldo(d))} · vence ${when(n)}`});
   });
   billRises().forEach(b=>out.push({tab:'home',lvl:'y',icon:'🔺',act:"go('home');homeTab('ana');setTimeout(()=>$('a-bills-card').scrollIntoView({behavior:'smooth'}),150)",text:`<b>${esc(b.name)}</b> subió ${Math.round(b.chg*100)}%: ${cop(b.prev)} → ${cop(b.last)}`}));
-  if(S.backupDays>0&&S.movs.length>=5){const age=backupAge();if(age>=S.backupDays)out.push({tab:'set',lvl:age>=S.backupDays*2?'r':'y',icon:'💾',act:"go('set');setTimeout(()=>$('backupCard').scrollIntoView({behavior:'smooth'}),80)",text:S.lastBackup?`Tu última copia fue <b>hace ${age} días</b>. Haz una nueva.`:'<b>Aún no has hecho una copia</b> de tus datos. Hazla ahora.'})}
+  if(S.backupDays>0&&S.movs.length>=5){const age=backupAge();if(age>=S.backupDays)out.push({tab:'set',lvl:age>=S.backupDays*2?'r':'y',icon:'💾',act:"go('set');setTimeout(()=>{sgOpen('data');$('backupCard').scrollIntoView({behavior:'smooth'})},80)",text:S.lastBackup?`Tu última copia fue <b>hace ${age} días</b>. Haz una nueva.`:'<b>Aún no has hecho una copia</b> de tus datos. Hazla ahora.'})}
   return out;
 }
 function renderAlerts(){
@@ -2915,6 +3048,7 @@ function dtab(t){if(t!=='cc')DT=t;DTAB=t;['me','yo','cc'].forEach(k=>$('dtb-'+k)
 const dueBadge=d=>{if(!d.venc)return'';const n=daysTo(d.venc);
   return n<0?`<span class="delta up">Vencida hace ${-n} d</span>`:n<=S.alertDays?`<span class="delta" style="background:var(--ys);color:var(--y)">${n===0?'Vence hoy':'Vence en '+n+' d'}</span>`:`<span class="sub">Vence ${d.venc}</span>`};
 function renderDebts(){
+  renderLlaves();
   const open=S.deudas.filter(d=>!d.cerrada),me=open.filter(d=>d.tipo==='me').reduce((a,d)=>a+debtSaldo(d),0),yo=open.filter(d=>d.tipo==='yo').reduce((a,d)=>a+debtSaldo(d),0),net=me-yo;
   $('db-hero').innerHTML=`<div class="hero" style="margin:12px 0 14px"><div class="lab">Balance con personas</div><div class="big" style="margin-bottom:4px">${net<0?'−':''}${cop(Math.abs(net))}</div><div style="opacity:.8;font-size:13px;margin-bottom:12px;position:relative;z-index:1">${net>=0?'a tu favor':'en tu contra'}</div>
     <div class="kp"><div><small>⬆️ Te deben</small><b>${cop(me)}</b></div><div><small>⬇️ Debes</small><b>${cop(yo)}</b></div></div></div>`;
