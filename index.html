@@ -2867,7 +2867,8 @@ function cloudSheet(){
 }
 async function cloudGo(mode){
   const f=CLF,err=m=>{const e=$('cl-err');if(e)e.textContent=m;return false};
-  const url=String(f.url||'').trim().replace(/\/+$/,''),key=String(f.key||'').trim(),email=String(f.email||'').trim().toLowerCase(),pass=String(f.pass||''),phr=String(f.phr||'');
+  let url=String(f.url||'').trim().replace(/\/+$/,'');try{url=new URL(/^[a-z]+:\/\//i.test(url)?url:'https://'+url).origin}catch(e){}
+  const key=String(f.key||'').trim(),email=String(f.email||'').trim().toLowerCase(),pass=String(f.pass||''),phr=String(f.phr||'');
   if(!/^https:\/\/\S+$/.test(url))return err('La URL debe empezar por https://');
   if(key.length<20)return err('Pega la llave pública completa');
   if(!/^\S+@\S+\.\S+$/.test(email))return err('Escribe un correo válido');
