@@ -635,6 +635,45 @@ svg rect[data-tip].tsel{fill:rgba(120,140,130,.16)}
 .cback .bh small{font-size:11.5px;font-weight:600;opacity:.8;white-space:nowrap}
 .cback .cgrid div{padding:8px 9px}.cback .cgrid small{font-size:11px}.cback .cgrid b{font-size:13.5px}
 @media(prefers-reduced-motion:reduce){.flipin>.ccard{transition:none}}
+/* ---------- tarjeta de perfil ---------- */
+.shero{position:relative;overflow:hidden;border-radius:30px;padding:20px 18px 16px;margin:10px 0 4px;color:#fff;--h1:#063d2b;--h2:#0d8556;--h3:#2fd08c;--hb:#e8c872;--hc:#7af0c0;--hsc:rgba(6,61,43,.5);
+  background:var(--gil) right -70px top -80px/300px 300px no-repeat,var(--noise) 0 0/160px 160px,radial-gradient(120% 100% at 50% 0%,transparent 55%,rgba(0,0,0,.28)),radial-gradient(120% 140% at 100% 0%,var(--h3) 0%,transparent 58%),linear-gradient(135deg,var(--h1),var(--h2));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.34),inset 0 0 0 1px rgba(255,255,255,.08),0 24px 50px -14px var(--hsc)}
+.shero[data-tod=dawn]{--h1:#4a2410;--h2:#b85c2a;--h3:#ffb86b;--hb:#ff8fa3;--hc:#ffe2a8;--hsc:rgba(184,92,42,.5)}
+.shero[data-tod=dusk]{--h1:#241446;--h2:#6d3a8c;--h3:#ff8f6b;--hb:#c77dff;--hc:#ffc4a0;--hsc:rgba(109,58,140,.5)}
+.shero[data-tod=night]{--h1:#050f26;--h2:#0e3566;--h3:#3f9cff;--hb:#5b6cff;--hc:#38d6c4;--hsc:rgba(14,53,102,.6)}
+.shero[data-tod=night] .hfx .sp{opacity:1}.shero[data-tod=day] .hfx .sp{opacity:.35}
+.shero>*:not(.hfx){position:relative;z-index:1}
+.shr1{display:flex;align-items:center;gap:16px}
+.shav{position:relative;width:106px;height:106px;border:0;background:none;padding:0;flex:none;display:grid;place-items:center;cursor:pointer;line-height:1;-webkit-tap-highlight-color:transparent;transition:transform .4s var(--spring);border-radius:50%}
+.shav:active{transform:scale(.94)}
+.shav:before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,#f6e3a1,#b8892f,#fff3c4,#b8892f,#f6e3a1);animation:pspin 9s linear infinite;box-shadow:0 12px 28px rgba(0,0,0,.38)}
+.shav .avt{position:relative;box-shadow:0 0 0 3px rgba(8,22,16,.65)}
+.shav .avt:not(:has(img)){text-shadow:0 2px 8px rgba(0,0,0,.3)}
+.shcam{position:absolute;right:-1px;bottom:3px;width:32px;height:32px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:15px;box-shadow:0 6px 14px rgba(0,0,0,.35)}
+@keyframes pspin{to{transform:rotate(360deg)}}
+.shn{flex:1;min-width:0;display:flex;flex-direction:column}
+.shn b{font-size:26px;letter-spacing:-.03em;line-height:1.1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.shn small{opacity:.82;font-size:13px;margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.shpill{display:inline-flex;align-items:center;gap:7px;margin-top:10px;align-self:flex-start;font-size:12px;font-weight:800;padding:6px 11px;border-radius:99px;background:rgba(255,255,255,.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:inset 0 1px 0 rgba(255,255,255,.25);cursor:pointer}
+.shpill i{width:8px;height:8px;border-radius:50%;background:#9aa7a0}
+.shpill.ok i{background:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,.28)}.shpill.sync i,.shpill.pend i{background:#facc15;animation:cpulse 1.1s ease-in-out infinite}.shpill.err i,.shpill.auth i{background:#ff6b5e}
+.shst{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.shst div{padding:11px 6px 10px;border-radius:18px;text-align:center;background:rgba(255,255,255,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:inset 0 1px 0 rgba(255,255,255,.26),inset 0 0 0 1px rgba(255,255,255,.06)}
+.shst b{display:block;font-size:21px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.shst small{display:block;font-size:11px;opacity:.82;margin-top:1px;font-weight:600}
+.shbtns{display:flex;gap:8px;margin-top:12px}
+.shbtns button{flex:1;border:0;border-radius:16px;padding:12px 8px;font-weight:800;font-size:13.5px;color:#fff;background:rgba(255,255,255,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.shbtns button:first-child{background:rgba(255,255,255,.95);color:#0b3d2a}
+.pfprev{display:flex;justify-content:center;margin:14px 0 6px}
+.pfprev .avt{box-shadow:0 14px 30px rgba(0,0,0,.25)}
+.pfopts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:2px}
+.pfopts button{border:0;border-radius:18px;padding:12px 4px;background:var(--soft);color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:3px;transition:transform .3s var(--spring)}
+.pfopts button:active{transform:scale(.96)}
+.pfopts b{font-size:22px;line-height:1.2}.pfopts small{color:var(--mut);font-weight:700;font-size:12px}
+.pfopts button.on{background:var(--gs);box-shadow:0 0 0 2px var(--g)}
+.pfemo{margin-top:10px}
+@media(prefers-reduced-motion:reduce){.shav:before{animation:none}}
 </style>
 </head>
 <body>
@@ -860,6 +899,7 @@ svg rect[data-tip].tsel{fill:rgba(120,140,130,.16)}
 <div id="nkp" class="nkp hide"><div class="nktop"><span id="nk-v">$ 0</span><button class="nkdone" onclick="closeKeypad()">Listo</button></div><div class="nkgrid" id="nk-grid"></div><button class="nklink" onclick="kpNative()">⌨️ Usar el teclado del sistema</button></div>
 <input type="file" id="avImg" accept="image/*" class="hide">
 <input type="file" id="qrFile" accept="image/*" class="hide" onchange="qrFilePicked(this)">
+<input type="file" id="pfImg" accept="image/*" class="hide" onchange="pfPhoto(this)">
 <div id="tip" class="tip hide"></div><canvas id="confetti" class="hide"></canvas>
 <div id="wrap" class="wrap hide"><div class="wbar" id="wbar"></div><button class="wx" onclick="closeWrapped()" aria-label="Cerrar">✕</button><div class="wl" onclick="wrapGo(-1)"></div><div class="wr" onclick="wrapGo(1)"></div><div id="wslide" class="wslide"></div></div>
 <div id="sheetBack" class="back hide" onclick="if(event.target===this)closeSheet()"><div class="sheet" id="sheet"></div></div>
@@ -2563,8 +2603,8 @@ function perfilSheet(){
 }
 function savePerfil(){
   const g=id=>$(id).value.trim();
-  S.perfil={nombre:g('pf-n'),doc:g('pf-d'),ciudad:g('pf-c'),tel:g('pf-t'),email:g('pf-e'),dir:g('pf-a'),decl:g('pf-x')};
-  persist();closeSheet();renderCC();toast('✅ Datos guardados');
+  S.perfil=Object.assign({},S.perfil,{nombre:g('pf-n'),doc:g('pf-d'),ciudad:g('pf-c'),tel:g('pf-t'),email:g('pf-e'),dir:g('pf-a'),decl:g('pf-x')});
+  persist();closeSheet();renderCC();prSyncName();renderSetHero();if(!$('v-home').classList.contains('hide'))$('title').textContent=homeTitle();toast('✅ Datos guardados');
 }
 const ccTotals=cc=>{const sub=(cc.items||[]).reduce((a,it)=>a+(+it.q||0)*(+it.v||0),0),ret=Math.round(sub*(+cc.ret||0)/100);return{sub,ret,total:sub-ret}};
 function renderCC(){
@@ -2970,17 +3010,6 @@ function sgSubs(){
   set('prof',PR.list.length>1?`${PR.list.length} perfiles · activo: ${((S.perfil&&S.perfil.nombre)||'tú').split(' ')[0]}`:'Para tu pareja, tu mamá, tu hermana…');
   set('keys',(S.llaves||[]).length?`${S.llaves.length} guardada${S.llaves.length>1?'s':''} · en Deudas`:'Nequi, Daviplata, bancos… en Deudas');
 }
-function renderSetHero(){
-  const h=$('setHero');if(!h)return;
-  const p=S.perfil||{},nm=(p.nombre||'').trim()||'Tu perfil';
-  const since=S.firstUse?new Date(S.firstUse+'T00:00:00').toLocaleDateString('es-CO',{month:'short',year:'numeric'}):'';
-  const cl=cEnabled()?({ok:'☁️ Sincronizado',sync:'☁️ Sincronizando…',pend:'☁️ Subiendo…',offline:'☁️ Sin conexión',err:'☁️ Error',auth:'☁️ Inicia sesión'}[CST]||'☁️'):'☁️ Sin nube';
-  h.innerHTML=`<div class="shero"><div class="shr1"><div class="shav" onclick="perfilSheet()">${avatar('Yo',64)}</div>
-    <div class="shn"><b>${esc(nm)}</b><small>${esc(cEnabled()?CL.email:(p.email||'Completa tus datos de cobro'))}</small></div>
-    <button class="sedit" onclick="perfilSheet()" aria-label="Editar perfil">✏️</button></div>
-    <div class="schips"><span>🧾 ${S.movs.length} movimientos</span><span>${since?'📅 desde '+esc(since):'📅 recién empiezas'}</span><span onclick="profSheet()">👥 ${PR.list.length>1?PR.list.length+' perfiles':'Perfiles'}</span><span onclick="sgOpen('cloud');document.querySelector('[data-sg=cloud]').scrollIntoView({behavior:'smooth',block:'center'})">${cl}</span></div></div>`;
-  sgSubs();
-}
 function goLlaves(){go('debts');setTimeout(()=>{const w=$('llWallet');if(w)w.scrollIntoView({behavior:'smooth',block:'start'})},120)}
 
 /* cartera de llaves de pago */
@@ -3010,57 +3039,11 @@ const PEMO=['🙂','😎','🦋','🌸','🌻','🦊','🐱','🐶','⭐','🍀'
 const PCOL=['#1fa166','#3b82f6','#ec4899','#8b5cf6','#f59e0b','#14b8a6','#ef4444','#6366f1'];
 const profReload=()=>{if(window.__NORELOAD)return;location.reload()};
 const profName=p=>((p.id===PID&&S.perfil&&S.perfil.nombre)||p.name||'Sin nombre');
-const profAvHtml=(emoji,color,name,s)=>`<span class="avt" style="width:${s}px;height:${s}px;background:${color||'#1fa166'};font-size:${Math.round(s*.5)}px;color:#fff">${esc(emoji||String(name||'?').charAt(0).toUpperCase())}</span>`;
-function prSyncName(){
-  const p=PR.list.find(x=>x.id===PID);if(!p)return;
-  const n=((S.perfil&&S.perfil.nombre)||'').trim();let ch=false;
-  if(n&&p.name!==n){p.name=n;ch=true}
-  const av=S.avatars&&S.avatars.Yo;if(av&&av.t==='emoji'&&av.v&&p.emoji!==av.v){p.emoji=av.v;ch=true}
-  if(!localStorage.getItem(PRK)||ch)prSave();
-}
 function homeTitle(){const n=((S.perfil&&S.perfil.nombre)||'').trim().split(/\s+/)[0]||'';return n?('Hola, '+n.slice(0,12)+' 👋'):'Hola 👋'}
-function profSheet(forced){
-  prSyncName();
-  openSheet(`<h2 style="margin:4px 0 0;font-size:22px">${forced?'¿Quién usa la app?':'👥 Perfiles'}</h2>
-  <div class="sub" style="margin:6px 0 12px;line-height:1.45">Cada perfil tiene sus propios datos, tarjetas, deudas y nube. Desde un perfil no se ve lo de los demás.</div>
-  <div class="plist">${PR.list.map(p=>{const act=p.id===PID;return`<div class="prow ${act?'on':''}" onclick="${act?(forced?'profPick()':'closeSheet()'):`profSwitch('${p.id}')`}">${profAvHtml(p.emoji,p.color,profName(p),46)}<div class="pn"><b>${esc(profName(p))}</b><small>${act?'✓ Perfil activo':'Toca para cambiar'}</small></div>${forced?'':`<button class="pedit" aria-label="Editar" onclick="event.stopPropagation();profEdit('${p.id}')">✏️</button>`}</div>`}).join('')}</div>
-  <button class="btn" onclick="profNew()">＋ Nuevo perfil</button>
-  ${PR.list.length>1?`<button class="btn sec" onclick="profAsk()">${PR.ask?'✅':'⬜'} Preguntar qué perfil usar al abrir</button>`:''}
-  ${forced?'':'<button class="btn sec" onclick="closeSheet()">Cerrar</button>'}`);
-}
 function profPick(){try{sessionStorage.setItem('gastos_prof_ok','1')}catch(e){}closeSheet()}
 function profAsk(){PR.ask=!PR.ask;prSave();profSheet()}
 function profSwitch(id){if(!PR.list.some(p=>p.id===id))return;PR.active=id;prSave();try{sessionStorage.setItem('gastos_prof_ok','1')}catch(e){}profReload()}
 let PF={};
-function profNew(){PF={id:'',name:'',emoji:PEMO[Math.floor(Math.random()*PEMO.length)],color:PCOL[PR.list.length%PCOL.length]};profForm()}
-function profEdit(id){const p=PR.list.find(x=>x.id===id);if(!p)return;PF={id,name:profName(p),emoji:p.emoji||'',color:p.color||PCOL[0]};profForm()}
-function profForm(){
-  const nw=!PF.id;
-  openSheet(`<h2 style="margin:4px 0 0;font-size:22px">${nw?'Nuevo perfil':'Editar perfil'}</h2>
-  <div style="display:flex;justify-content:center;margin:14px 0 4px">${profAvHtml(PF.emoji,PF.color,PF.name,76)}</div>
-  <label>Nombre</label><input id="pf-name" value="${esc(PF.name)}" placeholder="Ej. Laura" autocomplete="off" oninput="PF.name=this.value">
-  <label>Emoji</label><div class="chips">${PEMO.map(e=>`<button class="chip ${PF.emoji===e?'on':''}" onclick="PF.emoji='${e}';profForm()">${e}</button>`).join('')}</div>
-  <label>Color</label><div class="chips">${PCOL.map(c=>`<button class="chip ${PF.color===c?'on':''}" aria-label="Color" style="background:${c};width:38px;height:38px;padding:0;border-radius:50%" onclick="PF.color='${c}';profForm()"></button>`).join('')}</div>
-  ${nw?'<div class="hint">El perfil nuevo empieza vacío. Al crearlo, la app se abre con él.</div>':''}
-  <button class="btn" onclick="profSave()">${nw?'Crear y abrir':'Guardar'}</button>
-  ${!nw&&PF.id!==PID?`<button class="btn sec danger" onclick="profDel('${PF.id}')">🗑️ Eliminar perfil</button>`:''}
-  <button class="btn sec" onclick="profSheet()">Volver</button>`);
-}
-function profSave(){
-  const name=String(PF.name||'').trim();if(!name)return toast('Escribe un nombre','r');
-  if(!PF.id){
-    const id='p'+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
-    const st=defState();st.cards=[];st.perfil={nombre:name};st.welcomed=true;st.firstUse=new Date().toISOString().slice(0,10);st.avatars={Yo:{t:'emoji',v:PF.emoji||'🙂'}};
-    localStorage.setItem(keyOf(id),JSON.stringify(st));
-    PR.list.push({id,name,emoji:PF.emoji,color:PF.color});PR.active=id;prSave();
-    try{sessionStorage.setItem('gastos_prof_ok','1')}catch(e){}
-    profReload();return;
-  }
-  const p=PR.list.find(x=>x.id===PF.id);if(!p)return;
-  p.name=name;p.emoji=PF.emoji;p.color=PF.color;
-  if(p.id===PID){S.perfil=Object.assign({},S.perfil,{nombre:name});if(PF.emoji){S.avatars=S.avatars||{};S.avatars.Yo={t:'emoji',v:PF.emoji}}persist()}
-  prSave();renderSetHero();$('title').textContent=$('v-home').classList.contains('hide')?$('title').textContent:homeTitle();toast('✅ Perfil guardado');profSheet();
-}
 function profDel(id){
   if(id===PID)return toast('No puedes eliminar el perfil que estás usando','y');
   if(!confirm('¿Eliminar este perfil? Se borran sus datos de este teléfono (si tenía nube, la copia en la nube se conserva).'))return;
@@ -3071,14 +3054,14 @@ function profDel(id){
 
 /* bienvenida (primer uso) */
 const WL_CARDS=['Davivienda','Bancolombia','Banco de Bogotá','Nu','RappiCard','Lulo','Falabella','Scotiabank Colpatria','BBVA','Itaú'];
-let WL={n:'',emoji:'🙂',cards:[]};
+let WL={n:'',emoji:'',cards:[]};
 function welcomeSheet(){
   const inv=INVITE&&!cEnabled();
   openSheet(`<div style="text-align:center;font-size:44px;margin-top:4px">👋</div>
   <h2 style="margin:4px 0 0;font-size:24px;text-align:center">¡Bienvenido a Gastos!</h2>
   <div class="sub" style="text-align:center;margin:6px 0 4px">Dejémosla lista para ti en 20 segundos.</div>
   <label>¿Cómo te llamas?</label><input id="wl-n" value="${esc(WL.n)}" placeholder="Tu nombre" autocomplete="off" oninput="WL.n=this.value">
-  <label>Elige tu emoji</label><div class="chips">${PEMO.map(e=>`<button class="chip ${WL.emoji===e?'on':''}" onclick="WL.emoji='${e}';welcomeSheet()">${e}</button>`).join('')}</div>
+  <label>Tu avatar</label><div class="chips"><button class="chip ${!WL.emoji?'on':''}" onclick="WL.emoji='';welcomeSheet()">Aa · Inicial</button>${PEMO.map(e=>`<button class="chip ${WL.emoji===e?'on':''}" onclick="WL.emoji='${e}';welcomeSheet()">${e}</button>`).join('')}</div>
   <label>¿Qué tarjetas de crédito tienes? <span style="text-transform:none;letter-spacing:0;font-weight:500">(opcional)</span></label>
   <div class="chips">${WL_CARDS.map(c=>`<button class="chip ${WL.cards.includes(c)?'on':''}" onclick="welcomeCard('${c}')">${c}</button>`).join('')}</div>
   <button class="btn" onclick="welcomeDone()">Empezar</button>
@@ -3089,7 +3072,7 @@ function welcomeCard(c){const i=WL.cards.indexOf(c);if(i>=0)WL.cards.splice(i,1)
 function welcomeApply(){
   const n=String(WL.n||'').trim();
   S.perfil=Object.assign({},S.perfil,{nombre:n||(S.perfil&&S.perfil.nombre)||''});
-  S.avatars=S.avatars||{};S.avatars.Yo={t:'emoji',v:WL.emoji||'🙂'};
+  const av=WL.emoji?{t:'emoji',v:WL.emoji,c:PCOL[0]}:{t:'letter',c:PCOL[0]};S.perfil.av=av;S.avatars=S.avatars||{};if(av.t==='emoji')S.avatars.Yo={t:'emoji',v:WL.emoji};else delete S.avatars.Yo;
   S.cards=WL.cards.map((name,i)=>({name,nick:'',color:CPAL[i%CPAL.length],cupo:0,saldo:0,corte:0,pago:0,tasa:0,manejo:0}));
   S.welcomed=true;persist();prSyncName();
 }
@@ -3412,6 +3395,132 @@ function pendSheet(){
   <button class="btn sec" onclick="closeSheet()">Cerrar</button>`);
 }
 function pendDel(id){S.cobrosPend=(S.cobrosPend||[]).filter(x=>x.id!==id);persist();renderLlaves();(S.cobrosPend.length?pendSheet():closeSheet())}
+/* ---------- perfil: avatar con inicial, emoji o foto ---------- */
+const PEMO2=['😀','😎','🥰','🤩','🦋','🌸','🌻','🌈','🦊','🐱','🐶','🐼','🦄','⭐','🔥','💎','🍀','🎧','🚀','⚽','🎨','📚','☕','🍕'];
+const pInitial=n=>{const c=Array.from(String(n||'').trim())[0];return c?c.toUpperCase():'?'};
+const pGrad=c=>`linear-gradient(145deg,${c},${llShade(/^#[0-9a-f]{6}$/i.test(c)?c:'#1fa166',-.45)})`;
+function pAvHtml(av,name,sz){
+  av=av||{t:'letter'};const c=av.c||PCOL[0],st=`width:${sz}px;height:${sz}px;`;
+  if(av.t==='img'&&av.v)return`<span class="avt pav" style="${st}"><img src="${av.v}" alt=""></span>`;
+  if(av.t==='emoji'&&av.v)return`<span class="avt pav" style="${st}background:${pGrad(c)};font-size:${Math.round(sz*.54)}px">${esc(av.v)}</span>`;
+  return`<span class="avt pav" style="${st}background:${pGrad(c)};font-size:${Math.round(sz*.46)}px">${esc(pInitial(name))}</span>`;
+}
+function pAvOf(p){
+  if(p.id===PID){
+    if(S.perfil&&S.perfil.av)return S.perfil.av;
+    const y=S.avatars&&S.avatars.Yo;if(y&&(y.t==='emoji'||y.t==='img'))return{t:y.t,v:y.v,c:p.color||PCOL[0]};
+  }
+  if(p.av)return p.av;
+  return p.emoji?{t:'emoji',v:p.emoji,c:p.color||PCOL[0]}:{t:'letter',c:p.color||PCOL[0]};
+}
+const profAvHtml=(emoji,color,name,sz)=>pAvHtml(emoji?{t:'emoji',v:emoji,c:color}:{t:'letter',c:color},name,sz);
+function todNow(){const h=new Date().getHours();return h>=5&&h<8?'dawn':h>=8&&h<17?'day':h>=17&&h<20?'dusk':'night'}
+function prSyncName(){
+  const p=PR.list.find(x=>x.id===PID);if(!p)return;
+  const n=((S.perfil&&S.perfil.nombre)||'').trim();let ch=false;
+  if(n&&p.name!==n){p.name=n;ch=true}
+  const a=pAvOf(p),k={t:a.t,c:a.c};
+  if(a.t==='img')k.v=(S.perfil&&S.perfil.av&&S.perfil.av.th)||a.v;else if(a.t==='emoji')k.v=a.v;
+  if(cj(p.av||null)!==cj(k)){p.av=k;p.emoji=a.t==='emoji'?a.v:'';if(a.c)p.color=a.c;ch=true}
+  if(!localStorage.getItem(PRK)||ch)prSave();
+}
+function renderSetHero(){
+  const h=$('setHero');if(!h)return;
+  const p=S.perfil||{},nm=(p.nombre||'').trim(),a=pAvOf(PR.list.find(x=>x.id===PID)||{id:PID});
+  const days=S.firstUse?Math.max(1,Math.round((Date.now()-new Date(S.firstUse+'T00:00:00'))/864e5)+1):1;
+  const on=cEnabled(),cl=on?({ok:'Sincronizado',sync:'Sincronizando…',pend:'Subiendo…',offline:'Sin conexión',err:'Con un error',auth:'Inicia sesión'}[CST]||'Nube'):'Sin nube';
+  h.innerHTML=`<div class="shero" data-tod="${todNow()}">
+    <div class="hfx" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="sp"></i><i class="sh"></i></div>
+    <div class="shr1">
+      <button class="shav" onclick="pfSheet()" aria-label="Cambiar foto de perfil">${pAvHtml(a,nm,86)}<span class="shcam">📷</span></button>
+      <div class="shn"><b>${esc(nm||'Tu nombre')}</b><small>${esc(on?CL.email:(p.email||'Toca la foto para personalizar'))}</small>
+        <span class="shpill ${on?CST:'off'}" onclick="sgOpen('cloud');document.querySelector('[data-sg=cloud]').scrollIntoView({behavior:'smooth',block:'center'})"><i></i>${esc(cl)}</span></div>
+    </div>
+    <div class="shst"><div><b>${S.movs.length}</b><small>movimientos</small></div><div><b>${days}</b><small>${days===1?'día':'días'} con Gastos</small></div><div><b>${PR.list.length}</b><small>${PR.list.length===1?'perfil':'perfiles'}</small></div></div>
+    <div class="shbtns"><button onclick="pfSheet()">✏️ Editar perfil</button><button onclick="profSheet()">👥 ${PR.list.length>1?PR.list.length+' perfiles':'Perfiles'}</button></div>
+  </div>`;
+  sgSubs();
+}
+let PFE={};
+function pfSheet(){
+  const p=S.perfil||{},a=pAvOf(PR.list.find(x=>x.id===PID)||{id:PID});
+  PFE={name:p.nombre||'',t:a.t||'letter',v:a.v||'',c:a.c||PCOL[0],th:(p.av&&p.av.th)||''};pfRender();
+}
+const pfAv=()=>({t:PFE.t,v:PFE.v,c:PFE.c});
+function pfRender(){
+  const T=PFE.t;
+  openSheet(`<h2 style="margin:4px 0 0;font-size:22px">Tu perfil</h2>
+  <div class="pfprev">${pAvHtml(pfAv(),PFE.name,108)}</div>
+  <label>Nombre</label><input id="pe-n" value="${esc(PFE.name)}" placeholder="Tu nombre" autocomplete="off" oninput="PFE.name=this.value;pfPrev()">
+  <label>Tu foto</label>
+  <div class="pfopts"><button class="${T==='letter'?'on':''}" onclick="PFE.t='letter';pfRender()"><b id="pe-ini">${esc(pInitial(PFE.name))}</b><small>Inicial</small></button><button class="${T==='emoji'?'on':''}" onclick="PFE.t='emoji';if(!PFE.v||/^data:/.test(PFE.v))PFE.v='😀';pfRender()"><b>😀</b><small>Emoji</small></button><button class="${T==='img'?'on':''}" onclick="pfPick()"><b>📷</b><small>Foto</small></button></div>
+  ${T==='emoji'?`<div class="chips pfemo">${PEMO2.map(e=>`<button class="chip ${PFE.v===e?'on':''}" onclick="PFE.v='${e}';pfRender()">${e}</button>`).join('')}</div>`:''}
+  ${T==='img'?`<div class="hint">Se recorta en círculo. La foto se guarda en tu teléfono y, si usas la nube, cifrada con tu frase secreta.</div><button class="btn sec" onclick="pfPick()">📷 Cambiar foto</button>`:''}
+  ${T!=='img'?`<label>Color</label><div class="chips">${PCOL.map(c=>`<button class="chip ${PFE.c===c?'on':''}" aria-label="Color" style="background:${c};width:38px;height:38px;padding:0;border-radius:50%" onclick="PFE.c='${c}';pfRender()"></button>`).join('')}</div>`:''}
+  <button class="btn" onclick="pfSave()">Guardar</button>
+  <button class="btn sec" onclick="perfilSheet()">🧾 Mis datos de cobro</button>
+  <button class="btn sec" onclick="closeSheet()">Cancelar</button>`);
+}
+function pfPrev(){const e=document.querySelector('.pfprev');if(e)e.innerHTML=pAvHtml(pfAv(),PFE.name,108);const b=$('pe-ini');if(b)b.textContent=pInitial(PFE.name)}
+function pfPick(){const f=$('pfImg');if(f){f.value='';f.click()}}
+function pfPhoto(inp){
+  const file=inp.files&&inp.files[0];if(!file)return;
+  const fr=new FileReader();
+  fr.onload=()=>{const im=new Image();im.onload=()=>{
+    try{const sq=px=>{const m=Math.min(im.width,im.height),cv=document.createElement('canvas');cv.width=cv.height=px;cv.getContext('2d').drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,px,px);return cv.toDataURL('image/jpeg',.86)};
+      PFE.v=sq(320);PFE.th=sq(96);PFE.t='img';pfRender()}catch(e){toast('No pude leer esa foto','y')}};
+    im.onerror=()=>toast('No pude leer esa foto','y');im.src=fr.result};
+  fr.readAsDataURL(file);
+}
+function pfSave(){
+  const n=String(PFE.name||'').trim();
+  const av=PFE.t==='img'&&PFE.v?{t:'img',v:PFE.v,th:PFE.th,c:PFE.c}:PFE.t==='emoji'&&PFE.v?{t:'emoji',v:PFE.v,c:PFE.c}:{t:'letter',c:PFE.c};
+  S.perfil=Object.assign({},S.perfil,{nombre:n,av});
+  S.avatars=S.avatars||{};if(av.t==='letter')delete S.avatars.Yo;else S.avatars.Yo={t:av.t,v:av.v};
+  persist();prSyncName();renderSetHero();
+  if(!$('v-home').classList.contains('hide'))$('title').textContent=homeTitle();
+  closeSheet();toast('✅ Perfil actualizado');
+}
+function profSheet(forced){
+  prSyncName();
+  openSheet(`<h2 style="margin:4px 0 0;font-size:22px">${forced?'¿Quién usa la app?':'👥 Perfiles'}</h2>
+  <div class="sub" style="margin:6px 0 12px;line-height:1.45">Cada perfil tiene sus propios datos, tarjetas, deudas y nube. Desde un perfil no se ve lo de los demás.</div>
+  <div class="plist">${PR.list.map(p=>{const act=p.id===PID;return`<div class="prow ${act?'on':''}" onclick="${act?(forced?'profPick()':'closeSheet()'):`profSwitch('${p.id}')`}">${pAvHtml(pAvOf(p),profName(p),46)}<div class="pn"><b>${esc(profName(p))}</b><small>${act?'✓ Perfil activo':'Toca para cambiar'}</small></div>${forced?'':`<button class="pedit" aria-label="Editar" onclick="event.stopPropagation();${act?'pfSheet()':`profEdit('${p.id}')`}">✏️</button>`}</div>`}).join('')}</div>
+  <button class="btn" onclick="profNew()">＋ Nuevo perfil</button>
+  ${PR.list.length>1?`<button class="btn sec" onclick="profAsk()">${PR.ask?'✅':'⬜'} Preguntar qué perfil usar al abrir</button>`:''}
+  ${forced?'':'<button class="btn sec" onclick="closeSheet()">Cerrar</button>'}`);
+}
+function profNew(){PF={id:'',name:'',emoji:'',color:PCOL[PR.list.length%PCOL.length],photo:''};profForm()}
+function profEdit(id){const p=PR.list.find(x=>x.id===id);if(!p)return;const a=pAvOf(p);PF={id,name:profName(p),emoji:a.t==='emoji'?a.v:'',color:a.c||PCOL[0],photo:a.t==='img'?a.v:''};profForm()}
+function profForm(){
+  const nw=!PF.id,av=PF.photo?{t:'img',v:PF.photo}:PF.emoji?{t:'emoji',v:PF.emoji,c:PF.color}:{t:'letter',c:PF.color};
+  openSheet(`<h2 style="margin:4px 0 0;font-size:22px">${nw?'Nuevo perfil':'Editar perfil'}</h2>
+  <div class="pfprev">${pAvHtml(av,PF.name,88)}</div>
+  <label>Nombre</label><input id="pf-name" value="${esc(PF.name)}" placeholder="Ej. Laura" autocomplete="off" oninput="PF.name=this.value;profPrev()">
+  <label>Avatar</label><div class="chips"><button class="chip ${!PF.emoji&&!PF.photo?'on':''}" onclick="PF.emoji='';PF.photo='';profForm()">Inicial</button>${PEMO.map(e=>`<button class="chip ${PF.emoji===e?'on':''}" onclick="PF.emoji='${e}';PF.photo='';profForm()">${e}</button>`).join('')}</div>
+  <label>Color</label><div class="chips">${PCOL.map(c=>`<button class="chip ${PF.color===c?'on':''}" aria-label="Color" style="background:${c};width:38px;height:38px;padding:0;border-radius:50%" onclick="PF.color='${c}';profForm()"></button>`).join('')}</div>
+  ${nw?'<div class="hint">El perfil nuevo empieza vacío. Luego podrás ponerle una foto desde Ajustes.</div>':''}
+  <button class="btn" onclick="profSave()">${nw?'Crear y abrir':'Guardar'}</button>
+  ${!nw&&PF.id!==PID?`<button class="btn sec danger" onclick="profDel('${PF.id}')">🗑️ Eliminar perfil</button>`:''}
+  <button class="btn sec" onclick="profSheet()">Volver</button>`);
+}
+function profPrev(){const e=document.querySelector('.pfprev');if(e)e.innerHTML=pAvHtml(PF.photo?{t:'img',v:PF.photo}:PF.emoji?{t:'emoji',v:PF.emoji,c:PF.color}:{t:'letter',c:PF.color},PF.name,88)}
+function profSave(){
+  const name=String(PF.name||'').trim();if(!name)return toast('Escribe un nombre','r');
+  const av=PF.photo?{t:'img',v:PF.photo,c:PF.color}:PF.emoji?{t:'emoji',v:PF.emoji,c:PF.color}:{t:'letter',c:PF.color};
+  if(!PF.id){
+    const id='p'+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+    const st=defState();st.cards=[];st.perfil={nombre:name,av};st.welcomed=true;st.firstUse=new Date().toISOString().slice(0,10);st.avatars=av.t==='emoji'?{Yo:{t:'emoji',v:av.v}}:{};
+    localStorage.setItem(keyOf(id),JSON.stringify(st));
+    PR.list.push({id,name,emoji:av.t==='emoji'?av.v:'',color:PF.color,av});PR.active=id;prSave();
+    try{sessionStorage.setItem('gastos_prof_ok','1')}catch(e){}
+    profReload();return;
+  }
+  const p=PR.list.find(x=>x.id===PF.id);if(!p)return;
+  p.name=name;p.emoji=av.t==='emoji'?av.v:'';p.color=PF.color;p.av=av;
+  if(p.id===PID){const keep=S.perfil&&S.perfil.av&&S.perfil.av.t==='img'&&av.t!=='img'?null:null;S.perfil=Object.assign({},S.perfil,{nombre:name,av:av.t==='img'&&S.perfil&&S.perfil.av&&S.perfil.av.t==='img'?S.perfil.av:av});S.avatars=S.avatars||{};if(av.t==='emoji')S.avatars.Yo={t:'emoji',v:av.v};else if(av.t==='letter')delete S.avatars.Yo;persist()}
+  prSave();renderSetHero();if(!$('v-home').classList.contains('hide'))$('title').textContent=homeTitle();toast('✅ Perfil guardado');profSheet();
+}
 /* ---------- utilidades nuevas ---------- */
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const daysTo=d=>Math.round((new Date(d+'T00:00:00')-new Date(new Date().setHours(0,0,0,0)))/864e5);
