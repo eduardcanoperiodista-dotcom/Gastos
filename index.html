@@ -655,6 +655,7 @@ svg rect[data-tip].tsel{fill:rgba(120,140,130,.16)}
 .shn{flex:1;min-width:0;display:flex;flex-direction:column}
 .shn b{font-size:26px;letter-spacing:-.03em;line-height:1.1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .shn small{opacity:.82;font-size:13px;margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gtlink{background:none;border:0;color:#fff;font:inherit;font-weight:700;font-size:15px;text-decoration:underline;padding:10px;cursor:pointer;opacity:.95}
 .lobtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:10px;padding:13px 16px;border:0;border-radius:14px;font:inherit;font-weight:800;font-size:15px;color:#fff;background:linear-gradient(135deg,#ef4444,#b91c1c);box-shadow:0 6px 16px rgba(185,28,28,.35);cursor:pointer}
 .lobtn:active{transform:scale(.98)}.lobtn.hide{display:none}.lobtn.dlo{margin:8px 0 0;padding:11px 14px;font-size:14px}
 .shpill{display:inline-flex;align-items:center;gap:7px;margin-top:10px;align-self:flex-start;font-size:12px;font-weight:800;padding:6px 11px;border-radius:99px;background:rgba(255,255,255,.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:inset 0 1px 0 rgba(255,255,255,.25);cursor:pointer}
@@ -3119,9 +3120,9 @@ function logoutSheet(){
   <div id="lo-err" style="color:var(--r);font-weight:700;font-size:14px;min-height:18px"></div>
   <button class="btn sec" onclick="closeSheet()">Cancelar</button>`);
 }
-async function cloudLogout(wipe){
-  const err=m=>{const e=$('lo-err');if(e)e.textContent=m},dis=v=>['lo-keep','lo-wipe'].forEach(i=>{const b=$(i);if(b)b.disabled=v});
-  if(wipe&&!confirm('Se borrarán TODOS los datos y perfiles guardados en este dispositivo. Asegúrate de que estén en la nube. ¿Continuar?'))return;
+async function cloudLogout(wipe,next){
+  const err=m=>{const e=$('lo-err');if(e)e.textContent=m;else if(m)toast(m,'y')},dis=v=>['lo-keep','lo-wipe'].forEach(i=>{const b=$(i);if(b)b.disabled=v});
+  if(wipe&&!next&&!confirm('Se borrarán TODOS los datos y perfiles guardados en este dispositivo. Asegúrate de que estén en la nube. ¿Continuar?'))return;
   dis(true);err('Subiendo tus cambios…');
   if(cEnabled()){
     try{CBUSY=false;await cloudSync(true)}catch(e){}
@@ -3135,7 +3136,7 @@ async function cloudLogout(wipe){
   clearTimeout(CTMR);CDIRTY=false;
   if(wipe){
     try{Object.keys(localStorage).filter(k=>/^gastos/.test(k)).forEach(k=>localStorage.removeItem(k));sessionStorage.clear()}catch(e){}
-    CL={};S=defState();
+    CL={};S=defState();if(next){try{localStorage.setItem('gastos_next_login','1')}catch(e){}}
     if(window.__NORELOAD){closeSheet();return}
     document.body.innerHTML='<div style="font-family:system-ui;text-align:center;padding:60px 24px"><div style="font-size:48px">🔒</div><h2>Sesión cerrada</h2><p>Se borraron los datos de este dispositivo.</p></div>';
     setTimeout(()=>location.reload(),1600);return;
@@ -3300,8 +3301,13 @@ function cloudInvite(){
   const t='Te invito a usar mi app de gastos 💸. Ábrela, crea tu perfil y, si quieres respaldo en la nube, conéctate con tu propio correo y tu propia frase secreta: tus datos son solo tuyos.\n'+url;
   if(navigator.share)navigator.share({text:t}).catch(()=>{});else llCopyText(t,'📋 Invitación copiada');
 }
+function otherAccount(){
+  if(!confirm('Para entrar con otra cuenta se desconecta '+(CL.email||'la cuenta actual')+' y se borran los datos de ESTE dispositivo (siguen seguros en su nube). ¿Continuar?'))return;
+  return cloudLogout(true,true);
+}
 function profBoot(){
   prSyncName();
+  try{if(localStorage.getItem('gastos_next_login')){localStorage.removeItem('gastos_next_login');if(!window.__NOWELCOME){setTimeout(cloudSheet,500);return}}}catch(e){}
   const q=(location.hash||'').match(/nube=([^&]+)/);
   if(q){try{const j=JSON.parse(atob(decodeURIComponent(q[1])));if(j&&/^https:\/\//.test(j.u)&&j.k)INVITE={u:j.u,k:j.k}}catch(e){}try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}}
   if(window.__NOWELCOME)return;
@@ -4198,7 +4204,7 @@ function padUI(){
   $('lk-p').innerHTML=[1,2,3,4,5,6,7,8,9].map(n=>`<button onclick="padKey('${n}')">${n}</button>`).join('')+
     (face?`<button class="ghost" onclick="tryFace()">Face ID</button>`:PAD.mode==='unlock'?'<button class="ghost" style="visibility:hidden"></button>':`<button class="ghost" onclick="padCancel()">Cancelar</button>`)+
     `<button onclick="padKey('0')">0</button><button class="ghost" onclick="padKey('<')">⌫</button>`;
-  $('lk-f').innerHTML=PAD.mode==='unlock'?`<button class="ghost" style="background:none;border:0;color:#fff;opacity:.8;text-decoration:underline;font-size:14px" onclick="forgotPin()">Olvidé mi PIN</button>`:'';
+  $('lk-f').innerHTML=PAD.mode==='unlock'?`<button class="ghost" style="background:none;border:0;color:#fff;opacity:.8;text-decoration:underline;font-size:14px" onclick="forgotPin()">Olvidé mi PIN</button>${PAD.cb&&cEnabled()?`<button class="gtlink" onclick="otherAccount()">Ingresar con otra cuenta</button>`:''}`:'';
 }
 function showPad(mode,title,sub,cb){PAD={mode,buf:'',tmp:'',cb};$('lk-t').textContent=title;$('lk-s').textContent=sub||'';$('lock').classList.remove('hide');padUI();if(mode==='unlock'&&lockData()&&lockData().face)setTimeout(tryFace,250)}
 function padCancel(){$('lock').classList.add('hide')}
@@ -4273,9 +4279,11 @@ function gateShow(){
   <p style="margin:0;opacity:.85">Sesión cerrada</p>
   ${cl?`<div style="width:100%;max-width:340px"><input id="gt-p" type="password" placeholder="Tu frase secreta" autocomplete="off" style="text-align:center" onkeydown="if(event.key==='Enter')gateIn()"><div id="gt-e" style="color:#ffb4ab;font-weight:700;font-size:14px;min-height:20px;margin-top:6px"></div></div>
   <button class="btn" style="max-width:340px;background:#fff;color:#0b5d3c" onclick="gateIn()">Entrar</button>
-  <div style="opacity:.7;font-size:13px;max-width:300px;text-align:center">Usa la misma frase secreta de tu nube (${esc(CL.email||'')}).</div>`
+  <div style="opacity:.7;font-size:13px;max-width:300px;text-align:center">Usa la misma frase secreta de tu nube (${esc(CL.email||'')}).</div>
+  <button class="gtlink" onclick="otherAccount()">Ingresar con otra cuenta</button>`
   :`<button class="btn" style="max-width:340px;background:#fff;color:#0b5d3c" onclick="appOpen()">Entrar</button>
-  <div style="opacity:.7;font-size:13px;max-width:300px;text-align:center">Para que nadie más entre, activa un PIN en Ajustes › Seguridad o conecta tu nube.</div>`}`;
+  <div style="opacity:.7;font-size:13px;max-width:300px;text-align:center">Para que nadie más entre, activa un PIN en Ajustes › Seguridad o conecta tu nube.</div>
+  <button class="gtlink" onclick="appOpen();cloudSheet()">Ingresar con una cuenta</button>`}`;
   setTimeout(()=>{const i=$('gt-p');if(i&&!window.__NOANIM)i.focus()},100);
 }
 async function gateIn(){
